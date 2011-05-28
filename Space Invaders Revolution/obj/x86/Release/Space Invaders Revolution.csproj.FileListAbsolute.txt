@@ -1,0 +1,21 @@
+C:\Users\Hatorijr-Software\Desktop\Programming Projects\C# Projects\projects_c#_2010\Space Invaders Revolution\Space Invaders Revolution\bin\Release\Space Invaders Revolution.exe
+C:\Users\Hatorijr-Software\Desktop\Programming Projects\C# Projects\projects_c#_2010\Space Invaders Revolution\Space Invaders Revolution\bin\Release\Space Invaders Revolution.pdb
+C:\Users\Hatorijr-Software\Desktop\Programming Projects\C# Projects\projects_c#_2010\Space Invaders Revolution\Space Invaders Revolution\obj\x86\Release\ResolveAssemblyReference.cache
+C:\Users\Hatorijr-Software\Desktop\Programming Projects\C# Projects\projects_c#_2010\Space Invaders Revolution\Space Invaders Revolution\obj\x86\Release\Space_Invaders_Revolution.Properties.Resources.resources
+C:\Users\Hatorijr-Software\Desktop\Programming Projects\C# Projects\projects_c#_2010\Space Invaders Revolution\Space Invaders Revolution\obj\x86\Release\ResGen.read.1.tlog
+C:\Users\Hatorijr-Software\Desktop\Programming Projects\C# Projects\projects_c#_2010\Space Invaders Revolution\Space Invaders Revolution\obj\x86\Release\ResGen.write.1.tlog
+C:\Users\Hatorijr-Software\Desktop\Programming Projects\C# Projects\projects_c#_2010\Space Invaders Revolution\Space Invaders Revolution\obj\x86\Release\Space Invaders Revolution.exe
+C:\Users\Hatorijr-Software\Desktop\Programming Projects\C# Projects\projects_c#_2010\Space Invaders Revolution\Space Invaders Revolution\obj\x86\Release\Space Invaders Revolution.pdb
+C:\Users\Hatorijr-Software\Desktop\Programming Projects\C# Projects\projects_c#_2010\Space Invaders Revolution\Space Invaders Revolution\obj\x86\Release\Space_Invaders_Revolution.Form1.resources
+J:\Users\Hatorijr Software\Desktop\Programming Projects\C# Projects\projects_c#_2010\Space Invaders Revolution\Space Invaders Revolution\obj\x86\Release\Space Invaders Revolution.exe
+J:\Users\Hatorijr Software\Desktop\Programming Projects\C# Projects\projects_c#_2010\Space Invaders Revolution\Space Invaders Revolution\obj\x86\Release\Space Invaders Revolution.pdb
+J:\Users\Hatorijr Software\Desktop\Programming Projects\C# Projects\projects_c#_2010\Space Invaders Revolution\Space Invaders Revolution\bin\Release\Space Invaders Revolution.exe
+J:\Users\Hatorijr Software\Desktop\Programming Projects\C# Projects\projects_c#_2010\Space Invaders Revolution\Space Invaders Revolution\bin\Release\Space Invaders Revolution.pdb
+J:\Users\Hatorijr Software\Desktop\Programming Projects\C# Projects\projects_c#_2010\Space Invaders Revolution\Space Invaders Revolution\obj\x86\Release\ResolveAssemblyReference.cache
+J:\Users\Hatorijr Software\Desktop\Programming Projects\C# Projects\projects_c#_2010\Space Invaders Revolution\Space Invaders Revolution\obj\x86\Release\Space_Invaders_Revolution.Form1.resources
+J:\Users\Hatorijr Software\Desktop\Programming Projects\C# Projects\projects_c#_2010\Space Invaders Revolution\Space Invaders Revolution\obj\x86\Release\Space_Invaders_Revolution.Properties.Resources.resources
+J:\Users\Hatorijr Software\Desktop\Programming Projects\C# Projects\projects_c#_2010\Space Invaders Revolution\Space Invaders Revolution\obj\x86\Release\ResGen.read.1.tlog
+J:\Users\Hatorijr Software\Desktop\Programming Projects\C# Projects\projects_c#_2010\Space Invaders Revolution\Space Invaders Revolution\obj\x86\Release\ResGen.write.1.tlog
+J:\Users\Hatorijr Software\Desktop\Programming Projects\C# Projects\projects_c#_2010\Space Invaders Revolution\Space Invaders Revolution\bin\Release\SlimDX.dll
+J:\Users\Hatorijr Software\Desktop\Programming Projects\C# Projects\projects_c#_2010\Space Invaders Revolution\Space Invaders Revolution\bin\Release\SlimDX.pdb
+J:\Users\Hatorijr Software\Desktop\Programming Projects\C# Projects\projects_c#_2010\Space Invaders Revolution\Space Invaders Revolution\bin\Release\SlimDX.xml
