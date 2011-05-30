@@ -22,6 +22,7 @@ namespace Space_Invaders_Revolution
         private bool paused;
         private ZipFile resources;
         private bool critical_failure = false;
+        private Settings settings;
 
 #if SPEED
         //DateTime time_now;
@@ -72,7 +73,7 @@ namespace Space_Invaders_Revolution
             application_wallpaper("invaders.jpg");
             application_misc();
             //MessageBox.Show("current monitor workarea size is: " + SystemInformation.WorkingArea.Width + "x" + SystemInformation.WorkingArea.Height);
-            Settings settings = new Settings();
+            settings = new Settings();
         }
         #endregion
 
@@ -350,6 +351,20 @@ namespace Space_Invaders_Revolution
         }
         #endregion
 
+        #region retrieve settings
+        public Settings main_settings
+        {
+            get
+            {
+                return settings;
+            }
+            set
+            {
+                settings = value;
+            }
+        }
+        #endregion
+
         #region paused state
         public bool Paused_state
         {
@@ -409,9 +424,9 @@ namespace Space_Invaders_Revolution
                     {
                         video = new Video(this);
                         memory = new Memory(this, video);
-                        input = new Input(video);
+                        input = new Input(this, video);
                         sound = new Sound(this, video);
-                        cpu = new Cpu(ref memory, ref video, ref sound, ref input);
+                        cpu = new Cpu(this, ref memory, ref video, ref sound, ref input);
                     }
                     else
                     {
@@ -619,7 +634,7 @@ namespace Space_Invaders_Revolution
                             cpu = null;
                         }
 
-                        cpu = new Cpu(ref memory, ref video, ref sound, ref input);
+                        cpu = new Cpu(this, ref memory, ref video, ref sound, ref input);
                         memory.reinit_memory();
 
                         video.clear_screen();
@@ -656,14 +671,14 @@ namespace Space_Invaders_Revolution
                 
                 if (form2 == null)
                 {
-                    form2 = new Form2("settings");
+                    form2 = new Form2(this, "settings");
                     form2.Show();
                 }
                 else
                 {
                     if (form2.IsDisposed == true)
                     {
-                        form2 = new Form2("settings");
+                        form2 = new Form2(this, "settings");
                         form2.Show();
                     }
                     else

@@ -11,7 +11,7 @@ namespace Space_Invaders_Revolution
     class Sound
     {
         #region variables
-        public Form form1_reference;
+        private Form form1_reference;
 
         private Video video_reference;
         private DirectSound device;

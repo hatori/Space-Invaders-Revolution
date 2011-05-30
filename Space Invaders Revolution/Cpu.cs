@@ -79,7 +79,7 @@ namespace Space_Invaders_Revolution
         #endregion
 
         #region constructor
-        public Cpu(ref Memory memory, ref Video video, ref Sound sound, ref Input input)
+        public Cpu(Form form1_reference, ref Memory memory, ref Video video, ref Sound sound, ref Input input)
         {
             _memory = memory;
             _video = video;
@@ -99,14 +99,14 @@ namespace Space_Invaders_Revolution
             sp = 0;
             opcode = 0;
             INTE = 0;
-            /*try
+            try
             {
-                DipSwitch = Properties.Settings.Default.Dip_Switch_Total;
+                DipSwitch = byte.Parse(((Form1)form1_reference).main_settings.read_config_setting("Game", "Dip_Switch_Total"), System.Globalization.NumberStyles.HexNumber);
             }
             catch
-            {*/
+            {
                 DipSwitch = 0;
-            //}
+            }
 
             parity_loopup = new byte[0x100];
             cycles_lookup = new byte[] {
@@ -131,21 +131,6 @@ namespace Space_Invaders_Revolution
             for (int i = 0; i < parity_loopup.Length; i++)
             {
                 parity_loopup[i] = (byte)(4 & (4 ^ (i << 2) ^ (i << 1) ^ i ^ (i >> 1) ^ (i >> 2) ^ (i >> 3) ^ (i >> 4) ^ (i >> 5)));
-            }
-        }
-        #endregion
-
-        #region retrieve dipswitch
-        public byte dipswitch
-        {
-            get
-            {
-                return DipSwitch;
-            }
-
-            set
-            {
-                DipSwitch = value;
             }
         }
         #endregion

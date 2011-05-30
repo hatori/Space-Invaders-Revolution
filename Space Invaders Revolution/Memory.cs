@@ -6,7 +6,7 @@ namespace Space_Invaders_Revolution
     class Memory
     {
         #region variables
-        public Form form1_reference;
+        private Form form1_reference;
 
         private byte[] memory;
         private byte[] temp_storage;
@@ -50,7 +50,7 @@ namespace Space_Invaders_Revolution
         #endregion
 
         #region load rom
-        public void Load_Rom()
+        private void Load_Rom()
         {
             if ((!Load_File("invaders.h", 0)) || (!Load_File("invaders.g", 1)) ||
             (!Load_File("invaders.f", 2)) || (!Load_File("invaders.e", 3)))

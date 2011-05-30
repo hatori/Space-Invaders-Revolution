@@ -12,7 +12,7 @@ namespace Space_Invaders_Revolution
     public class Video
     {
         #region Variables
-        public Form form1_reference;
+        private Form form1_reference;
 
         private Form screen;
         private CancelEventHandler closing;
@@ -282,7 +282,7 @@ namespace Space_Invaders_Revolution
         #endregion
 
         #region setup screen
-        public void setup_screen()
+        private void setup_screen()
         {
             customvertex = new CustomVertex.TransformedTextured[6];
             vb = new VertexBuffer(device, Marshal.SizeOf(typeof(CustomVertex.TransformedTextured)) * 6, Usage.WriteOnly, CustomVertex.TransformedTextured.Format, Pool.Managed);
@@ -301,15 +301,26 @@ namespace Space_Invaders_Revolution
         #endregion
 
         #region setup colors
-        public void setup_colors()
+        private void setup_colors()
         {
             colors = new Color[5];
 
-            colors[0] = Color.Red;
-            colors[1] = Color.Green;
-            colors[2] = Color.Green;
-            colors[3] = Color.White;
-            colors[4] = Color.Black;
+            try
+            {
+                colors[0] = Color.FromArgb(int.Parse(((Form1)form1_reference).main_settings.read_config_setting("Video", "color0")));
+                colors[1] = Color.FromArgb(int.Parse(((Form1)form1_reference).main_settings.read_config_setting("Video", "color1")));
+                colors[2] = Color.FromArgb(int.Parse(((Form1)form1_reference).main_settings.read_config_setting("Video", "color2")));
+                colors[3] = Color.FromArgb(int.Parse(((Form1)form1_reference).main_settings.read_config_setting("Video", "color3")));
+                colors[4] = Color.FromArgb(int.Parse(((Form1)form1_reference).main_settings.read_config_setting("Video", "color4")));
+            }
+            catch
+            {
+                colors[0] = Color.Red;
+                colors[1] = Color.Green;
+                colors[2] = Color.Green;
+                colors[3] = Color.White;
+                colors[4] = Color.Black;
+            }
         }
         #endregion
 

@@ -11,6 +11,8 @@ namespace Space_Invaders_Revolution
     public partial class Form2 : Form
     {
         #region variables
+        Form _form1_reference;
+
         // Settings Menu
         private byte Temp_Dipswitch;
 
@@ -26,8 +28,9 @@ namespace Space_Invaders_Revolution
         #endregion
 
         #region constructor
-        public Form2(string type)
+        public Form2(Form Form1_reference, string type)
         {
+            _form1_reference = Form1_reference;
             InitializeComponent();
 
             switch (type)
@@ -48,7 +51,7 @@ namespace Space_Invaders_Revolution
             application_resize(292, 172);
             application_misc();
             //MessageBox.Show("current monitor workarea size is: " + SystemInformation.WorkingArea.Width + "x" + SystemInformation.WorkingArea.Height);
-
+            #region control init code
             this.lblMess = new System.Windows.Forms.Label();
             this.lblLives = new System.Windows.Forms.Label();
             this.cmbLives = new System.Windows.Forms.ComboBox();
@@ -102,7 +105,7 @@ namespace Space_Invaders_Revolution
             this.lblCoin.Text = "Coin Info: ";
 
             this.cmbCoin.FormattingEnabled = true;
-            this.cmbCoin.Items.AddRange(new object[] { "On", "Off"});
+            this.cmbCoin.Items.AddRange(new object[] { "on", "off"});
             this.cmbCoin.Location = new System.Drawing.Point(95, 102);
             this.cmbCoin.Name = "cmbCoin";
             this.cmbCoin.Size = new System.Drawing.Size(54, 21);
@@ -143,6 +146,11 @@ namespace Space_Invaders_Revolution
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.MaximizeBox = false;
             this.ShowInTaskbar = false;
+            #endregion
+
+            cmbCoin.Text = ((Form1)_form1_reference).main_settings.read_config_setting("Game", "Coin_Info");
+            cmbBonus.Text = ((Form1)_form1_reference).main_settings.read_config_setting("Game", "Bonus_Life");
+            cmbLives.Text = ((Form1)_form1_reference).main_settings.read_config_setting("Game", "Starting_Lives");
         }
         #endregion
 
@@ -195,7 +203,7 @@ namespace Space_Invaders_Revolution
             {
                 case "3":
                     {
-                        //Properties.Settings.Default.Starting_Lives = "3";
+                        ((Form1)_form1_reference).main_settings.write_config_setting("Game", "Starting_Lives", "3");
 
                         if ((Temp_Dipswitch & 0x1) != 0)
                         {
@@ -209,7 +217,7 @@ namespace Space_Invaders_Revolution
                     }
                 case "4":
                     {
-                        //Properties.Settings.Default.Starting_Lives = "4";
+                        ((Form1)_form1_reference).main_settings.write_config_setting("Game", "Starting_Lives", "4");
 
                         if ((Temp_Dipswitch & 0x1) != 1)
                         {
@@ -223,7 +231,7 @@ namespace Space_Invaders_Revolution
                     }
                 case "5":
                     {
-                        //Properties.Settings.Default.Starting_Lives = "5";
+                        ((Form1)_form1_reference).main_settings.write_config_setting("Game", "Starting_Lives", "5");
 
                         if ((Temp_Dipswitch & 0x1) != 0)
                         {
@@ -237,7 +245,7 @@ namespace Space_Invaders_Revolution
                     }
                 case "6":
                     {
-                        //Properties.Settings.Default.Starting_Lives = "6";
+                        ((Form1)_form1_reference).main_settings.write_config_setting("Game", "Starting_Lives", "6");
 
                         if ((Temp_Dipswitch & 0x1) != 1)
                         {
@@ -264,7 +272,7 @@ namespace Space_Invaders_Revolution
             {
                 case "1000":
                     {
-                        //Properties.Settings.Default.Bonus_Life = "1000";
+                        ((Form1)_form1_reference).main_settings.write_config_setting("Game", "Bonus_Life", "1000");
 
                         if (((Temp_Dipswitch >> 3) & 0x1) != 1)
                         {
@@ -274,7 +282,7 @@ namespace Space_Invaders_Revolution
                     }
                 case "1500":
                     {
-                        //Properties.Settings.Default.Bonus_Life = "1500";
+                        ((Form1)_form1_reference).main_settings.write_config_setting("Game", "Bonus_Life", "1500");
 
                         if (((Temp_Dipswitch >> 3) & 0x1) != 0)
                         {
@@ -295,9 +303,9 @@ namespace Space_Invaders_Revolution
         {
             switch (cmbCoin.Text)
             {
-                case "Off":
+                case "off":
                     {
-                        //Properties.Settings.Default.Coin_Info = "Off";
+                        ((Form1)_form1_reference).main_settings.write_config_setting("Game", "Coin_Info", "off");
 
                         if (((Temp_Dipswitch >> 7) & 0x1) != 1)
                         {
@@ -305,9 +313,9 @@ namespace Space_Invaders_Revolution
                         }
                         break;
                     }
-                case "On":
+                case "on":
                     {
-                        //Properties.Settings.Default.Coin_Info = "On";
+                        ((Form1)_form1_reference).main_settings.write_config_setting("Game", "Coin_Info", "on");
 
                         if (((Temp_Dipswitch >> 7) & 0x1) != 0)
                         {
@@ -336,9 +344,7 @@ namespace Space_Invaders_Revolution
             Get_Lives();
             Get_Bonus();
             Get_Coin();
-            //Properties.Settings.Default.Dip_Switch_Total = Temp_Dipswitch;
-            //Properties.Settings.Default.Save();
-            //Cpu.DipSwitch = Temp_Dipswitch;
+            ((Form1)_form1_reference).main_settings.write_config_setting("Game", "Dip_Switch_Total", Temp_Dipswitch.ToString("X2"));
             MessageBox.Show("Settings Successfully Saved.", "Success!", MessageBoxButtons.OK);
         }
         #endregion

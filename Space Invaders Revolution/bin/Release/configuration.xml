@@ -4,12 +4,13 @@
     <Coin_Info>on</Coin_Info>
     <Bonus_Life>1500</Bonus_Life>
     <Starting_Lives>3</Starting_Lives>
+    <Dip_Switch_Total>0</Dip_Switch_Total>
   </Game>
   <Video>
-    <color0>4294901760</color0>
-    <color1>4278222848</color1>
-    <color2>4278222848</color2>
-    <color3>4294967295</color3>
-    <color4>4278190080</color4>
+    <color0>-65536</color0>
+    <color1>-16744448</color1>
+    <color2>-16744448</color2>
+    <color3>-1</color3>
+    <color4>-16777216</color4>
   </Video>
 </SPACE_INVADERS_REVOLUTION_CONFIGURATION>
