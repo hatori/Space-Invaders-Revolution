@@ -13,4 +13,16 @@
     <color3>-1</color3>
     <color4>-16777216</color4>
   </Video>
+  <Input>
+    <key0>Delete</key0>
+    <key1>D2</key1>
+    <key2>D1</key2>
+    <key3>Space</key3>
+    <key4>A</key4>
+    <key5>D</key5>
+    <key6>T</key6>
+    <key7>NumberPad0</key7>
+    <key8>LeftArrow</key8>
+    <key9>RightArrow</key9>
+  </Input>
 </SPACE_INVADERS_REVOLUTION_CONFIGURATION>

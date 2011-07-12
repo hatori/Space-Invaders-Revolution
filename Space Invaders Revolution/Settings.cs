@@ -133,16 +133,16 @@ namespace Space_Invaders_Revolution
             write_config_setting("Video", "color2", ((int)Color.Green.ToArgb()).ToString());
             write_config_setting("Video", "color3", ((int)Color.White.ToArgb()).ToString());
             write_config_setting("Video", "color4", ((int)Color.Black.ToArgb()).ToString());
-            write_config_setting("Input", "key0", byte.Parse(SlimDX.DirectInput.Key.Return.ToString()).ToString());
-            //write_config_setting("Input", "key1", ((int)Color.Black.ToArgb()).ToString());
-            //write_config_setting("Input", "key2", ((int)Color.Black.ToArgb()).ToString());
-            //write_config_setting("Input", "key3", ((int)Color.Black.ToArgb()).ToString());
-            //write_config_setting("Input", "key4", ((int)Color.Black.ToArgb()).ToString());
-            //write_config_setting("Input", "key5", ((int)Color.Black.ToArgb()).ToString());
-            //write_config_setting("Input", "key6", ((int)Color.Black.ToArgb()).ToString());
-            //write_config_setting("Input", "key7", ((int)Color.Black.ToArgb()).ToString());
-            //write_config_setting("Input", "key8", ((int)Color.Black.ToArgb()).ToString());
-            //write_config_setting("Input", "key9", ((int)Color.Black.ToArgb()).ToString());
+            write_config_setting("Input", "key0", SlimDX.DirectInput.Key.Return.ToString());
+            write_config_setting("Input", "key1", SlimDX.DirectInput.Key.D2.ToString());
+            write_config_setting("Input", "key2", SlimDX.DirectInput.Key.D1.ToString());
+            write_config_setting("Input", "key3", SlimDX.DirectInput.Key.Space.ToString());
+            write_config_setting("Input", "key4", SlimDX.DirectInput.Key.A.ToString());
+            write_config_setting("Input", "key5", SlimDX.DirectInput.Key.D.ToString());
+            write_config_setting("Input", "key6", SlimDX.DirectInput.Key.T.ToString());
+            write_config_setting("Input", "key7", SlimDX.DirectInput.Key.NumberPad0.ToString());
+            write_config_setting("Input", "key8", SlimDX.DirectInput.Key.LeftArrow.ToString());
+            write_config_setting("Input", "key9", SlimDX.DirectInput.Key.RightArrow.ToString());
         }
         #endregion
 

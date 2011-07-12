@@ -365,6 +365,20 @@ namespace Space_Invaders_Revolution
         }
         #endregion
 
+        #region retrieve input
+        public Input main_input
+        {
+            get
+            {
+                return input;
+            }
+            set
+            {
+                input = value;
+            }
+        }
+        #endregion
+
         #region paused state
         public bool Paused_state
         {
@@ -424,7 +438,7 @@ namespace Space_Invaders_Revolution
                     {
                         video = new Video(this);
                         memory = new Memory(this, video);
-                        input = new Input(this, video);
+                        input = new Input(this, video.Directx_Window.Handle);
                         sound = new Sound(this, video);
                         cpu = new Cpu(this, ref memory, ref video, ref sound, ref input);
                     }
@@ -432,7 +446,7 @@ namespace Space_Invaders_Revolution
                     {
                         video.reinit_directx();
                         sound.reinit_directsound();
-                        input.Reinitialize_Keyboard();
+                        input.Reinitialize_Keyboard(video.Directx_Window.Handle);
                     }
 
                     if (time == null)
@@ -627,7 +641,7 @@ namespace Space_Invaders_Revolution
 
                         video.reinit_directx();
                         sound.reinit_directsound();
-                        input.Reinitialize_Keyboard();
+                        input.Reinitialize_Keyboard(video.Directx_Window.Handle);
 
                         if (cpu != null)
                         {
@@ -679,6 +693,44 @@ namespace Space_Invaders_Revolution
                     if (form2.IsDisposed == true)
                     {
                         form2 = new Form2(this, "settings");
+                        form2.Show();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Please close the current settings menu before opening another.", "Warning", MessageBoxButtons.OK);
+                    }
+                }
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+        #endregion
+
+        #region key bindings
+        public void subitem_Key_Bindings()
+        {
+            try
+            {
+                if (time != null)
+                {
+                    if ((time.Enabled) || (paused))
+                    {
+                        MessageBox.Show("The cpu is either paused or running, \nall settings are read only.", "Error!", MessageBoxButtons.OK);
+                    }
+                }
+
+                if (form2 == null)
+                {
+                    form2 = new Form2(this, "key_bindings");
+                    form2.Show();
+                }
+                else
+                {
+                    if (form2.IsDisposed == true)
+                    {
+                        form2 = new Form2(this, "key_bindings");
                         form2.Show();
                     }
                     else
