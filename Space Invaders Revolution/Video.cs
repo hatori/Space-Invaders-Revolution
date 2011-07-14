@@ -31,6 +31,8 @@ namespace Space_Invaders_Revolution
         private DataStream vertex_data;
         private DataRectangle texture_data;
         private Color[] colors;
+        private int height;
+        private int width;
         #endregion
 
         #region vertex class
@@ -60,6 +62,8 @@ namespace Space_Invaders_Revolution
             form1_reference = _form1_reference;
             critical_failure = false;
 
+            Load_Window_Size();
+
             if (!initialize_directx())
             {
                 MessageBox.Show("problem with directx initialization");
@@ -83,6 +87,17 @@ namespace Space_Invaders_Revolution
         }
         #endregion
 
+        #region load window size
+        private void Load_Window_Size()
+        {
+            string size = ((Form1)form1_reference).main_settings.read_config_setting("Game", "Window_Resolution");
+
+            string[] sizes = size.Split(new string[] { " x " }, StringSplitOptions.RemoveEmptyEntries);
+            width = int.Parse(sizes[0]);
+            height = int.Parse(sizes[1]);
+        }
+        #endregion
+
         #region initialize directx
         private bool initialize_directx()
         {
@@ -95,8 +110,8 @@ namespace Space_Invaders_Revolution
                 pp.PresentFlags = PresentFlags.LockableBackBuffer;
                 pp.PresentationInterval = PresentInterval.Immediate;
                 pp.BackBufferCount = 1;
-                pp.BackBufferHeight = 256;
-                pp.BackBufferWidth = 224;
+                pp.BackBufferHeight = height;
+                pp.BackBufferWidth = width;
             }
 
             initialize_directx_window();
@@ -147,7 +162,7 @@ namespace Space_Invaders_Revolution
             screen.MaximizeBox = false;
             screen.Text = form1_reference.Text;
             screen.Name = "Directx Screen";
-            screen.ClientSize = new System.Drawing.Size(224, 256);
+            screen.ClientSize = new System.Drawing.Size(width, height);
             //screen.WindowState = FormWindowState.Minimized;
             //screen.ShowInTaskbar = false;
             //this.Screen_visibility = false;
@@ -228,6 +243,8 @@ namespace Space_Invaders_Revolution
                     screen.Dispose();
                     screen = null;
                 }
+
+                Load_Window_Size();
 
                 if (!initialize_directx())
                 {

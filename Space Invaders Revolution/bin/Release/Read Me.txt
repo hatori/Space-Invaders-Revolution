@@ -1,22 +1,24 @@
 Space Invaders Revolution
 -------------------------
-Coded By: Hatorijr
+Coded By: Hatori
 
 Requirements:
 - .Net Framework 2.0
-- Managed DirectX
+- SlimDX
 
 Troubleshooting:
 - If it crashes on start up, it means one of the requirements is missing,
-download the latest directx installer from microsoft's website and install it,
-which will install managed directx if missing. other wise, installing .net 2.0 will fix it.
+installing .net 2.0 will fix it.
 
-Version: 1.0 - First Release
+Version: 2.0
 
 - Fully emulated i8080 core, no noticeable bugs left.
+- Full Sound support.
 - Full control remap ability.
 - Full dip switch configuration.
 - Color customization.
+- Resolution customization.
+- New configuration system.
 
 Default Controls
 ----------------

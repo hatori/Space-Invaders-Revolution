@@ -3,7 +3,7 @@ Space Invaders Revolution 1.1
 - Sound now plays while emu is not in focus.
 - Put in a temp fix for a rare crash where the configuration file can not be read.
 - Put in a restart option.
-- Fixed game only runnign at 40 FPS and boosted to proper 60~ FPS.
+- Fixed game only running at 40 FPS and boosted to proper 60~ FPS.
 - Refixed lost device recovery.
 - Now runs on Nvidia, ATI and intel graphics cards.
 - Cleaned up code and put in a few improvements in code.
@@ -11,3 +11,7 @@ Space Invaders Revolution 1.1
 Space Invaders 1.1.1
 - Cleaned up code some more.
 - Added in full zip support.
+
+Space Invaders 2.0
+- Complete Rewrite of codebase to improve the way the emulator works and looks.
+- Emulator now runs on SlimDX Instead of Managed DirectX.

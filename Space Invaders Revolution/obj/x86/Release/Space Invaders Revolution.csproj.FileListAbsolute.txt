@@ -19,3 +19,4 @@ J:\Users\Hatorijr Software\Desktop\Programming Projects\C# Projects\projects_c#_
 J:\Users\Hatorijr Software\Desktop\Programming Projects\C# Projects\projects_c#_2010\Space Invaders Revolution\Space Invaders Revolution\bin\Release\SlimDX.dll
 J:\Users\Hatorijr Software\Desktop\Programming Projects\C# Projects\projects_c#_2010\Space Invaders Revolution\Space Invaders Revolution\bin\Release\SlimDX.pdb
 J:\Users\Hatorijr Software\Desktop\Programming Projects\C# Projects\projects_c#_2010\Space Invaders Revolution\Space Invaders Revolution\bin\Release\SlimDX.xml
+J:\Users\Hatorijr Software\Desktop\Programming Projects\C# Projects\projects_c#_2010\Space Invaders Revolution\Space Invaders Revolution\obj\x86\Release\Space_Invaders_Revolution.Form2.resources

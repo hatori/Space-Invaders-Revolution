@@ -4,7 +4,8 @@
     <Coin_Info>on</Coin_Info>
     <Bonus_Life>1500</Bonus_Life>
     <Starting_Lives>3</Starting_Lives>
-    <Dip_Switch_Total>0</Dip_Switch_Total>
+    <Dip_Switch_Total>00</Dip_Switch_Total>
+    <Window_Resolution>224 x 256</Window_Resolution>
   </Game>
   <Video>
     <color0>-65536</color0>
@@ -14,7 +15,7 @@
     <color4>-16777216</color4>
   </Video>
   <Input>
-    <key0>Delete</key0>
+    <key0>Return</key0>
     <key1>D2</key1>
     <key2>D1</key2>
     <key3>Space</key3>

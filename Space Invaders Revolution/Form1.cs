@@ -447,6 +447,10 @@ namespace Space_Invaders_Revolution
                         video.reinit_directx();
                         sound.reinit_directsound();
                         input.Reinitialize_Keyboard(video.Directx_Window.Handle);
+                        if (cpu == null)
+                        {
+                            cpu = new Cpu(this, ref memory, ref video, ref sound, ref input);
+                        }
                     }
 
                     if (time == null)
@@ -583,6 +587,7 @@ namespace Space_Invaders_Revolution
                         video.Screen_visibility = true;
                         video.reinit_directx();
                         sound.reinit_directsound();
+                        input.Reinitialize_Keyboard(video.Directx_Window.Handle);
                         time.Start();
                         video.Directx_Window.Activate();
                         paused = false;
@@ -731,6 +736,44 @@ namespace Space_Invaders_Revolution
                     if (form2.IsDisposed == true)
                     {
                         form2 = new Form2(this, "key_bindings");
+                        form2.Show();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Please close the current settings menu before opening another.", "Warning", MessageBoxButtons.OK);
+                    }
+                }
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+        #endregion
+
+        #region color settings
+        public void subitem_Color_Settings()
+        {
+            try
+            {
+                if (time != null)
+                {
+                    if ((time.Enabled) || (paused))
+                    {
+                        MessageBox.Show("The cpu is either paused or running, \nall settings are read only.", "Error!", MessageBoxButtons.OK);
+                    }
+                }
+
+                if (form2 == null)
+                {
+                    form2 = new Form2(this, "color");
+                    form2.Show();
+                }
+                else
+                {
+                    if (form2.IsDisposed == true)
+                    {
+                        form2 = new Form2(this, "color");
                         form2.Show();
                     }
                     else

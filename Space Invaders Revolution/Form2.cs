@@ -23,6 +23,8 @@ namespace Space_Invaders_Revolution
         private ComboBox cmbBonus;
         private Label lblCoin;
         private ComboBox cmbCoin;
+        private ComboBox cmbResolution;
+        private Label lblResolution;
         private Button btnSave;
         private Button btnClose;
         #endregion
@@ -60,6 +62,31 @@ namespace Space_Invaders_Revolution
         private System.Windows.Forms.Button btnPlayer2_Left;
         private System.Windows.Forms.Button btnPlayer2_Right;
         #endregion
+
+        #region color menu
+        private System.Windows.Forms.Label lblSpaceship;
+        private System.Windows.Forms.TextBox txtSpaceship_Red;
+        private System.Windows.Forms.Label lblRed;
+        private System.Windows.Forms.TextBox txtSpaceship_Green;
+        private System.Windows.Forms.Label lblGreen;
+        private System.Windows.Forms.TextBox txtSpaceship_Blue;
+        private System.Windows.Forms.Label lblBlue;
+        private System.Windows.Forms.Label lblPlayer;
+        private System.Windows.Forms.TextBox txtPlayer_Red;
+        private System.Windows.Forms.TextBox txtPlayer_Green;
+        private System.Windows.Forms.TextBox txtPlayer_Blue;
+        private System.Windows.Forms.TextBox txtLives_Red;
+        private System.Windows.Forms.TextBox txtLives_Green;
+        private System.Windows.Forms.TextBox txtLives_Blue;
+        private System.Windows.Forms.Label lblDefault;
+        private System.Windows.Forms.TextBox txtDefault_Red;
+        private System.Windows.Forms.TextBox txtDefault_Green;
+        private System.Windows.Forms.TextBox txtDefault_Blue;
+        private System.Windows.Forms.Label lblBackground;
+        private System.Windows.Forms.TextBox txtBackground_Red;
+        private System.Windows.Forms.TextBox txtBackground_Green;
+        private System.Windows.Forms.TextBox txtBackground_Blue;
+        #endregion
         #endregion
 
         #region constructor
@@ -81,7 +108,319 @@ namespace Space_Invaders_Revolution
                         startUp_key_bindings();
                         break;
                     }
+                case "color":
+                    {
+                        startUp_color();
+                        break;
+                    }
             }
+        }
+        #endregion
+
+        #region form closing
+        void Form2_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (input_create == true)
+            {
+                ((Form1)_form1_reference).main_input.Uninitialize_Keyboard();
+            }
+        }
+        #endregion
+
+        #region startup color
+        private void startUp_color()
+        {
+            application_title("Colors Menu");
+            application_resize(292, 261);
+            application_misc();
+            
+            #region control init code
+            this.lblMess = new System.Windows.Forms.Label();
+            this.lblMess2 = new System.Windows.Forms.Label();
+            this.lblSpaceship = new System.Windows.Forms.Label();
+            this.txtSpaceship_Red = new System.Windows.Forms.TextBox();
+            this.lblRed = new System.Windows.Forms.Label();
+            this.txtSpaceship_Green = new System.Windows.Forms.TextBox();
+            this.lblGreen = new System.Windows.Forms.Label();
+            this.txtSpaceship_Blue = new System.Windows.Forms.TextBox();
+            this.lblBlue = new System.Windows.Forms.Label();
+            this.lblPlayer = new System.Windows.Forms.Label();
+            this.txtPlayer_Red = new System.Windows.Forms.TextBox();
+            this.txtPlayer_Green = new System.Windows.Forms.TextBox();
+            this.txtPlayer_Blue = new System.Windows.Forms.TextBox();
+            this.lblLives = new System.Windows.Forms.Label();
+            this.txtLives_Red = new System.Windows.Forms.TextBox();
+            this.txtLives_Green = new System.Windows.Forms.TextBox();
+            this.txtLives_Blue = new System.Windows.Forms.TextBox();
+            this.lblDefault = new System.Windows.Forms.Label();
+            this.txtDefault_Red = new System.Windows.Forms.TextBox();
+            this.txtDefault_Green = new System.Windows.Forms.TextBox();
+            this.txtDefault_Blue = new System.Windows.Forms.TextBox();
+            this.lblBackground = new System.Windows.Forms.Label();
+            this.txtBackground_Red = new System.Windows.Forms.TextBox();
+            this.txtBackground_Green = new System.Windows.Forms.TextBox();
+            this.txtBackground_Blue = new System.Windows.Forms.TextBox();
+            this.btnClose = new System.Windows.Forms.Button();
+            this.btnSave = new System.Windows.Forms.Button();
+            this.SuspendLayout();
+            // 
+            // lblMess
+            // 
+            this.lblMess.AutoSize = true;
+            this.lblMess.Location = new System.Drawing.Point(21, 9);
+            this.lblMess.Name = "lblMess";
+            this.lblMess.Size = new System.Drawing.Size(246, 13);
+            this.lblMess.TabIndex = 0;
+            this.lblMess.Text = "This screen allows you to customize the colors that";
+            // 
+            // lblMess2
+            // 
+            this.lblMess2.AutoSize = true;
+            this.lblMess2.Location = new System.Drawing.Point(75, 22);
+            this.lblMess2.Name = "lblMess2";
+            this.lblMess2.Size = new System.Drawing.Size(133, 13);
+            this.lblMess2.TabIndex = 1;
+            this.lblMess2.Text = "Appear in Space Invaders.";
+            // 
+            // lblSpaceship
+            // 
+            this.lblSpaceship.AutoSize = true;
+            this.lblSpaceship.Location = new System.Drawing.Point(12, 68);
+            this.lblSpaceship.Name = "lblSpaceship";
+            this.lblSpaceship.Size = new System.Drawing.Size(88, 13);
+            this.lblSpaceship.TabIndex = 2;
+            this.lblSpaceship.Text = "Spaceship Area: ";
+            // 
+            // txtSpaceship_Red
+            // 
+            this.txtSpaceship_Red.Location = new System.Drawing.Point(127, 65);
+            this.txtSpaceship_Red.Name = "txtSpaceship_Red";
+            this.txtSpaceship_Red.Size = new System.Drawing.Size(41, 20);
+            this.txtSpaceship_Red.TabIndex = 3;
+            // 
+            // lblRed
+            // 
+            this.lblRed.AutoSize = true;
+            this.lblRed.Location = new System.Drawing.Point(130, 49);
+            this.lblRed.Name = "lblRed";
+            this.lblRed.Size = new System.Drawing.Size(33, 13);
+            this.lblRed.TabIndex = 4;
+            this.lblRed.Text = "Red: ";
+            // 
+            // txtSpaceship_Green
+            // 
+            this.txtSpaceship_Green.Location = new System.Drawing.Point(174, 65);
+            this.txtSpaceship_Green.Name = "txtSpaceship_Green";
+            this.txtSpaceship_Green.Size = new System.Drawing.Size(41, 20);
+            this.txtSpaceship_Green.TabIndex = 5;
+            // 
+            // lblGreen
+            // 
+            this.lblGreen.AutoSize = true;
+            this.lblGreen.Location = new System.Drawing.Point(174, 49);
+            this.lblGreen.Name = "lblGreen";
+            this.lblGreen.Size = new System.Drawing.Size(42, 13);
+            this.lblGreen.TabIndex = 6;
+            this.lblGreen.Text = "Green: ";
+            // 
+            // txtSpaceship_Blue
+            // 
+            this.txtSpaceship_Blue.Location = new System.Drawing.Point(221, 65);
+            this.txtSpaceship_Blue.Name = "txtSpaceship_Blue";
+            this.txtSpaceship_Blue.Size = new System.Drawing.Size(41, 20);
+            this.txtSpaceship_Blue.TabIndex = 7;
+            // 
+            // lblBlue
+            // 
+            this.lblBlue.AutoSize = true;
+            this.lblBlue.Location = new System.Drawing.Point(224, 49);
+            this.lblBlue.Name = "lblBlue";
+            this.lblBlue.Size = new System.Drawing.Size(28, 13);
+            this.lblBlue.TabIndex = 8;
+            this.lblBlue.Text = "Blue";
+            // 
+            // lblPlayer
+            // 
+            this.lblPlayer.AutoSize = true;
+            this.lblPlayer.Location = new System.Drawing.Point(12, 98);
+            this.lblPlayer.Name = "lblPlayer";
+            this.lblPlayer.Size = new System.Drawing.Size(67, 13);
+            this.lblPlayer.TabIndex = 2;
+            this.lblPlayer.Text = "Player Area: ";
+            // 
+            // txtPlayer_Red
+            // 
+            this.txtPlayer_Red.Location = new System.Drawing.Point(127, 95);
+            this.txtPlayer_Red.Name = "txtPlayer_Red";
+            this.txtPlayer_Red.Size = new System.Drawing.Size(41, 20);
+            this.txtPlayer_Red.TabIndex = 3;
+            // 
+            // txtPlayer_Green
+            // 
+            this.txtPlayer_Green.Location = new System.Drawing.Point(174, 95);
+            this.txtPlayer_Green.Name = "txtPlayer_Green";
+            this.txtPlayer_Green.Size = new System.Drawing.Size(41, 20);
+            this.txtPlayer_Green.TabIndex = 5;
+            // 
+            // txtPlayer_Blue
+            // 
+            this.txtPlayer_Blue.Location = new System.Drawing.Point(221, 95);
+            this.txtPlayer_Blue.Name = "txtPlayer_Blue";
+            this.txtPlayer_Blue.Size = new System.Drawing.Size(41, 20);
+            this.txtPlayer_Blue.TabIndex = 7;
+            // 
+            // lblLives
+            // 
+            this.lblLives.AutoSize = true;
+            this.lblLives.Location = new System.Drawing.Point(12, 129);
+            this.lblLives.Name = "lblLives";
+            this.lblLives.Size = new System.Drawing.Size(63, 13);
+            this.lblLives.TabIndex = 2;
+            this.lblLives.Text = "Lives Area: ";
+            // 
+            // txtLives_Red
+            // 
+            this.txtLives_Red.Location = new System.Drawing.Point(127, 126);
+            this.txtLives_Red.Name = "txtLives_Red";
+            this.txtLives_Red.Size = new System.Drawing.Size(41, 20);
+            this.txtLives_Red.TabIndex = 3;
+            // 
+            // txtLives_Green
+            // 
+            this.txtLives_Green.Location = new System.Drawing.Point(174, 126);
+            this.txtLives_Green.Name = "txtLives_Green";
+            this.txtLives_Green.Size = new System.Drawing.Size(41, 20);
+            this.txtLives_Green.TabIndex = 5;
+            // 
+            // txtLives_Blue
+            // 
+            this.txtLives_Blue.Location = new System.Drawing.Point(221, 126);
+            this.txtLives_Blue.Name = "txtLives_Blue";
+            this.txtLives_Blue.Size = new System.Drawing.Size(41, 20);
+            this.txtLives_Blue.TabIndex = 7;
+            // 
+            // lblDefault
+            // 
+            this.lblDefault.AutoSize = true;
+            this.lblDefault.Location = new System.Drawing.Point(12, 161);
+            this.lblDefault.Name = "lblDefault";
+            this.lblDefault.Size = new System.Drawing.Size(72, 13);
+            this.lblDefault.TabIndex = 2;
+            this.lblDefault.Text = "Default Area: ";
+            // 
+            // txtDefault_Red
+            // 
+            this.txtDefault_Red.Location = new System.Drawing.Point(127, 158);
+            this.txtDefault_Red.Name = "txtDefault_Red";
+            this.txtDefault_Red.Size = new System.Drawing.Size(41, 20);
+            this.txtDefault_Red.TabIndex = 3;
+            // 
+            // txtDefault_Green
+            // 
+            this.txtDefault_Green.Location = new System.Drawing.Point(174, 158);
+            this.txtDefault_Green.Name = "txtDefault_Green";
+            this.txtDefault_Green.Size = new System.Drawing.Size(41, 20);
+            this.txtDefault_Green.TabIndex = 5;
+            // 
+            // txtDefault_Blue
+            // 
+            this.txtDefault_Blue.Location = new System.Drawing.Point(221, 158);
+            this.txtDefault_Blue.Name = "txtDefault_Blue";
+            this.txtDefault_Blue.Size = new System.Drawing.Size(41, 20);
+            this.txtDefault_Blue.TabIndex = 7;
+            // 
+            // lblBackground
+            // 
+            this.lblBackground.AutoSize = true;
+            this.lblBackground.Location = new System.Drawing.Point(12, 193);
+            this.lblBackground.Name = "lblBackground";
+            this.lblBackground.Size = new System.Drawing.Size(96, 13);
+            this.lblBackground.TabIndex = 2;
+            this.lblBackground.Text = "Background Area: ";
+            // 
+            // txtBackground_Red
+            // 
+            this.txtBackground_Red.Location = new System.Drawing.Point(127, 190);
+            this.txtBackground_Red.Name = "txtBackground_Red";
+            this.txtBackground_Red.Size = new System.Drawing.Size(41, 20);
+            this.txtBackground_Red.TabIndex = 3;
+            // 
+            // txtBackground_Green
+            // 
+            this.txtBackground_Green.Location = new System.Drawing.Point(174, 190);
+            this.txtBackground_Green.Name = "txtBackground_Green";
+            this.txtBackground_Green.Size = new System.Drawing.Size(41, 20);
+            this.txtBackground_Green.TabIndex = 5;
+            // 
+            // txtBackground_Blue
+            // 
+            this.txtBackground_Blue.Location = new System.Drawing.Point(221, 190);
+            this.txtBackground_Blue.Name = "txtBackground_Blue";
+            this.txtBackground_Blue.Size = new System.Drawing.Size(41, 20);
+            this.txtBackground_Blue.TabIndex = 7;
+            // 
+            // btnClose
+            // 
+            this.btnClose.Location = new System.Drawing.Point(205, 226);
+            this.btnClose.Name = "btnClose";
+            this.btnClose.Size = new System.Drawing.Size(75, 23);
+            this.btnClose.TabIndex = 9;
+            this.btnClose.Text = "Close";
+            this.btnClose.UseVisualStyleBackColor = true;
+            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
+            // 
+            // btnSave
+            // 
+            this.btnSave.Location = new System.Drawing.Point(124, 226);
+            this.btnSave.Name = "btnSave";
+            this.btnSave.Size = new System.Drawing.Size(75, 23);
+            this.btnSave.TabIndex = 10;
+            this.btnSave.Text = "Save";
+            this.btnSave.UseVisualStyleBackColor = true;
+            this.btnSave.Click += new System.EventHandler(this.btnSave_color_Click);
+            // 
+            // Form2
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.Controls.Add(this.btnSave);
+            this.Controls.Add(this.btnClose);
+            this.Controls.Add(this.lblBlue);
+            this.Controls.Add(this.txtBackground_Blue);
+            this.Controls.Add(this.txtDefault_Blue);
+            this.Controls.Add(this.txtLives_Blue);
+            this.Controls.Add(this.txtPlayer_Blue);
+            this.Controls.Add(this.txtSpaceship_Blue);
+            this.Controls.Add(this.lblGreen);
+            this.Controls.Add(this.txtBackground_Green);
+            this.Controls.Add(this.txtDefault_Green);
+            this.Controls.Add(this.txtLives_Green);
+            this.Controls.Add(this.txtPlayer_Green);
+            this.Controls.Add(this.txtSpaceship_Green);
+            this.Controls.Add(this.lblRed);
+            this.Controls.Add(this.txtBackground_Red);
+            this.Controls.Add(this.txtDefault_Red);
+            this.Controls.Add(this.txtLives_Red);
+            this.Controls.Add(this.txtPlayer_Red);
+            this.Controls.Add(this.txtSpaceship_Red);
+            this.Controls.Add(this.lblBackground);
+            this.Controls.Add(this.lblDefault);
+            this.Controls.Add(this.lblLives);
+            this.Controls.Add(this.lblPlayer);
+            this.Controls.Add(this.lblSpaceship);
+            this.Controls.Add(this.lblMess2);
+            this.Controls.Add(this.lblMess);
+            this.DoubleBuffered = true;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
+            this.MaximizeBox = false;
+            this.ShowInTaskbar = false;
+            this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
+            this.ResumeLayout(false);
+            this.PerformLayout();
+            #endregion
+
+            Load_Colors();
         }
         #endregion
 
@@ -91,11 +430,12 @@ namespace Space_Invaders_Revolution
             application_title("Key Bindings Menu");
             application_resize(292, 358);
             application_misc();
-            //MessageBox.Show("current monitor workarea size is: " + SystemInformation.WorkingArea.Width + "x" + SystemInformation.WorkingArea.Height);
+            
             if (((Form1)_form1_reference).main_input == null)
             {
                 ((Form1)_form1_reference).main_input = new Input(_form1_reference, this.Handle);
                 input_create = true;
+                this.FormClosing += new FormClosingEventHandler(Form2_FormClosing);
             }
 
             #region control init code
@@ -454,12 +794,11 @@ namespace Space_Invaders_Revolution
             this.btnPlayer2_Right.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.btnPlayer2_Right_PreviewKeyDown);
             this.btnPlayer2_Right.MouseClick += new System.Windows.Forms.MouseEventHandler(this.btnPlayer2_Right_MouseClick);
             // 
-            // Form3
+            // Form2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.ClientSize = new System.Drawing.Size(292, 358);
             this.Controls.Add(this.btnPlayer2_Right);
             this.Controls.Add(this.btnPlayer2_Left);
             this.Controls.Add(this.btnPlayer2_Fire);
@@ -514,9 +853,9 @@ namespace Space_Invaders_Revolution
         private void startUp_settings()
         {
             application_title("Settings Menu");
-            application_resize(292, 172);
+            application_resize(292, 207);
             application_misc();
-            //MessageBox.Show("current monitor workarea size is: " + SystemInformation.WorkingArea.Width + "x" + SystemInformation.WorkingArea.Height);
+            
             #region control init code
             this.lblMess = new System.Windows.Forms.Label();
             this.lblLives = new System.Windows.Forms.Label();
@@ -525,6 +864,8 @@ namespace Space_Invaders_Revolution
             this.cmbBonus = new System.Windows.Forms.ComboBox();
             this.lblCoin = new System.Windows.Forms.Label();
             this.cmbCoin = new System.Windows.Forms.ComboBox();
+            this.lblResolution = new System.Windows.Forms.Label();
+            this.cmbResolution = new System.Windows.Forms.ComboBox();
             this.btnSave = new System.Windows.Forms.Button();
             this.btnClose = new System.Windows.Forms.Button();
 
@@ -544,7 +885,7 @@ namespace Space_Invaders_Revolution
 
             this.cmbLives.FormattingEnabled = true;
             this.cmbLives.Items.AddRange(new object[] { "3", "4", "5", "6"});
-            this.cmbLives.Location = new System.Drawing.Point(95, 36);
+            this.cmbLives.Location = new System.Drawing.Point(124, 36);
             this.cmbLives.Name = "cmbLives";
             this.cmbLives.Size = new System.Drawing.Size(46, 21);
             this.cmbLives.TabIndex = 2;
@@ -558,7 +899,7 @@ namespace Space_Invaders_Revolution
 
             this.cmbBonus.FormattingEnabled = true;
             this.cmbBonus.Items.AddRange(new object[] { "1000", "1500"});
-            this.cmbBonus.Location = new System.Drawing.Point(95, 68);
+            this.cmbBonus.Location = new System.Drawing.Point(124, 68);
             this.cmbBonus.Name = "cmbBonus";
             this.cmbBonus.Size = new System.Drawing.Size(66, 21);
             this.cmbBonus.TabIndex = 4;
@@ -572,24 +913,37 @@ namespace Space_Invaders_Revolution
 
             this.cmbCoin.FormattingEnabled = true;
             this.cmbCoin.Items.AddRange(new object[] { "on", "off"});
-            this.cmbCoin.Location = new System.Drawing.Point(95, 102);
+            this.cmbCoin.Location = new System.Drawing.Point(124, 102);
             this.cmbCoin.Name = "cmbCoin";
             this.cmbCoin.Size = new System.Drawing.Size(54, 21);
             this.cmbCoin.TabIndex = 6;
 
-            this.btnSave.Location = new System.Drawing.Point(124, 137);
+            this.lblResolution.AutoSize = true;
+            this.lblResolution.Location = new System.Drawing.Point(12, 139);
+            this.lblResolution.Name = "lblResolution";
+            this.lblResolution.Size = new System.Drawing.Size(105, 13);
+            this.lblResolution.TabIndex = 7;
+            this.lblResolution.Text = "Window Resolution: ";
+
+            this.cmbResolution.FormattingEnabled = true;
+            this.cmbResolution.Location = new System.Drawing.Point(124, 136);
+            this.cmbResolution.Name = "cmbResolution";
+            this.cmbResolution.Size = new System.Drawing.Size(121, 21);
+            this.cmbResolution.TabIndex = 8;
+
+            this.btnSave.Location = new System.Drawing.Point(124, 172);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(75, 23);
-            this.btnSave.TabIndex = 7;
+            this.btnSave.TabIndex = 9;
             this.btnSave.Text = "Save";
             this.btnSave.UseVisualStyleBackColor = true;
             this.btnSave.Click += new System.EventHandler(this.btnSave_settings_Click);
 
             this.btnClose.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btnClose.Location = new System.Drawing.Point(205, 137);
+            this.btnClose.Location = new System.Drawing.Point(205, 172);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(75, 23);
-            this.btnClose.TabIndex = 8;
+            this.btnClose.TabIndex = 10;
             this.btnClose.Text = "Close";
             this.btnClose.UseVisualStyleBackColor = true;
             this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
@@ -598,9 +952,10 @@ namespace Space_Invaders_Revolution
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.CancelButton = this.btnClose;
             this.Controls.Add(this.btnClose);
             this.Controls.Add(this.btnSave);
+            this.Controls.Add(this.cmbResolution);
+            this.Controls.Add(this.lblResolution);
             this.Controls.Add(this.cmbCoin);
             this.Controls.Add(this.lblCoin);
             this.Controls.Add(this.cmbBonus);
@@ -614,9 +969,7 @@ namespace Space_Invaders_Revolution
             this.ShowInTaskbar = false;
             #endregion
 
-            cmbCoin.Text = ((Form1)_form1_reference).main_settings.read_config_setting("Game", "Coin_Info");
-            cmbBonus.Text = ((Form1)_form1_reference).main_settings.read_config_setting("Game", "Bonus_Life");
-            cmbLives.Text = ((Form1)_form1_reference).main_settings.read_config_setting("Game", "Starting_Lives");
+            Load_Settings();
         }
         #endregion
 
@@ -659,6 +1012,29 @@ namespace Space_Invaders_Revolution
             {
                 MessageBox.Show(e.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+        #endregion
+
+        #region populate resolution
+        void Populate_Resolution()
+        {
+            int multiplier = SystemInformation.WorkingArea.Height / 256;
+
+            for (int i = 1; i <= multiplier; i++)
+            {
+                cmbResolution.Items.Add((224 * i).ToString() + " x " + (256 * i).ToString());
+            }
+        }
+        #endregion
+
+        #region load settings
+        void Load_Settings()
+        {
+            Populate_Resolution();
+            cmbCoin.Text = ((Form1)_form1_reference).main_settings.read_config_setting("Game", "Coin_Info");
+            cmbBonus.Text = ((Form1)_form1_reference).main_settings.read_config_setting("Game", "Bonus_Life");
+            cmbLives.Text = ((Form1)_form1_reference).main_settings.read_config_setting("Game", "Starting_Lives");
+            cmbResolution.Text = ((Form1)_form1_reference).main_settings.read_config_setting("Game", "Window_Resolution");
         }
         #endregion
 
@@ -797,7 +1173,17 @@ namespace Space_Invaders_Revolution
         }
         #endregion
 
-        #region close settings
+        #region get window resolution
+        void Get_Window_Resolution()
+        {
+            if (cmbResolution.Items.Contains(cmbResolution.Text) == true)
+            {
+                ((Form1)_form1_reference).main_settings.write_config_setting("Game", "Window_Resolution", cmbResolution.Text);
+            }
+        }
+        #endregion
+
+        #region close
         private void btnClose_Click(object sender, EventArgs e)
         {
             this.Close();
@@ -810,6 +1196,7 @@ namespace Space_Invaders_Revolution
             Get_Lives();
             Get_Bonus();
             Get_Coin();
+            Get_Window_Resolution();
             ((Form1)_form1_reference).main_settings.write_config_setting("Game", "Dip_Switch_Total", Temp_Dipswitch.ToString("X2"));
             MessageBox.Show("Settings Successfully Saved.", "Success!", MessageBoxButtons.OK);
         }
@@ -1157,6 +1544,218 @@ namespace Space_Invaders_Revolution
             ((Form1)_form1_reference).main_input.Reinitialize_Keyboard(this.Handle);
             ((Form1)_form1_reference).main_input.Uninitialize_Keyboard();
             MessageBox.Show("Key Bindings Successfully Saved.", "Success!", MessageBoxButtons.OK);
+        }
+        #endregion
+
+        #region load colors
+        void Load_Colors()
+        {
+            try
+            {
+                txtSpaceship_Red.Text = Color.FromArgb(int.Parse(((Form1)_form1_reference).main_settings.read_config_setting("Video", "color0"))).R.ToString();
+                txtSpaceship_Green.Text = Color.FromArgb(int.Parse(((Form1)_form1_reference).main_settings.read_config_setting("Video", "color0"))).G.ToString();
+                txtSpaceship_Blue.Text = Color.FromArgb(int.Parse(((Form1)_form1_reference).main_settings.read_config_setting("Video", "color0"))).B.ToString();
+
+                txtPlayer_Red.Text = Color.FromArgb(int.Parse(((Form1)_form1_reference).main_settings.read_config_setting("Video", "color1"))).R.ToString();
+                txtPlayer_Green.Text = Color.FromArgb(int.Parse(((Form1)_form1_reference).main_settings.read_config_setting("Video", "color1"))).G.ToString();
+                txtPlayer_Blue.Text = Color.FromArgb(int.Parse(((Form1)_form1_reference).main_settings.read_config_setting("Video", "color1"))).B.ToString();
+
+                txtLives_Red.Text = Color.FromArgb(int.Parse(((Form1)_form1_reference).main_settings.read_config_setting("Video", "color2"))).R.ToString();
+                txtLives_Green.Text = Color.FromArgb(int.Parse(((Form1)_form1_reference).main_settings.read_config_setting("Video", "color2"))).G.ToString();
+                txtLives_Blue.Text = Color.FromArgb(int.Parse(((Form1)_form1_reference).main_settings.read_config_setting("Video", "color2"))).B.ToString();
+
+                txtDefault_Red.Text = Color.FromArgb(int.Parse(((Form1)_form1_reference).main_settings.read_config_setting("Video", "color3"))).R.ToString();
+                txtDefault_Green.Text = Color.FromArgb(int.Parse(((Form1)_form1_reference).main_settings.read_config_setting("Video", "color3"))).G.ToString();
+                txtDefault_Blue.Text = Color.FromArgb(int.Parse(((Form1)_form1_reference).main_settings.read_config_setting("Video", "color3"))).B.ToString();
+
+                txtBackground_Red.Text = Color.FromArgb(int.Parse(((Form1)_form1_reference).main_settings.read_config_setting("Video", "color4"))).R.ToString();
+                txtBackground_Green.Text = Color.FromArgb(int.Parse(((Form1)_form1_reference).main_settings.read_config_setting("Video", "color4"))).G.ToString();
+                txtBackground_Blue.Text = Color.FromArgb(int.Parse(((Form1)_form1_reference).main_settings.read_config_setting("Video", "color4"))).B.ToString();
+            }
+            catch
+            {
+                MessageBox.Show("An error has been detected with the default settings file, \nplease report this error.", "Error!", MessageBoxButtons.OK);
+                btnSave.Enabled = false;
+            }
+        }
+        #endregion
+
+        #region get spaceship color
+        void Get_Spaceship_Color()
+        {
+            if (txtSpaceship_Red.Text.Length <= 0)
+            {
+                txtSpaceship_Red.Text = "0";
+            }
+
+            if (txtSpaceship_Green.Text.Length <= 0)
+            {
+                txtSpaceship_Green.Text = "0";
+            }
+
+            if (txtSpaceship_Blue.Text.Length <= 0)
+            {
+                txtSpaceship_Blue.Text = "0";
+            }
+
+            if ((Convert.ToInt32(txtSpaceship_Red.Text) >= 0) && (Convert.ToInt32(txtSpaceship_Red.Text) < 256) &&
+                (Convert.ToInt32(txtSpaceship_Green.Text) >= 0) && (Convert.ToInt32(txtSpaceship_Green.Text) < 256) &&
+                (Convert.ToInt32(txtSpaceship_Blue.Text) >= 0) && (Convert.ToInt32(txtSpaceship_Blue.Text) < 256))
+            {
+                ((Form1)_form1_reference).main_settings.write_config_setting("Video", "color0", Color.FromArgb(Convert.ToInt32(txtSpaceship_Red.Text), Convert.ToInt32(txtSpaceship_Green.Text), Convert.ToInt32(txtSpaceship_Blue.Text)).ToArgb().ToString());
+            }
+            else
+            {
+                MessageBox.Show("An error has been detected in the spaceship area color, \nplease correct this error.", "Error!", MessageBoxButtons.OK);
+                return;
+            }
+        }
+        #endregion
+
+        #region get player color
+        void Get_Player_Color()
+        {
+            if (txtPlayer_Red.Text.Length <= 0)
+            {
+                txtPlayer_Red.Text = "0";
+            }
+
+            if (txtPlayer_Green.Text.Length <= 0)
+            {
+                txtPlayer_Green.Text = "0";
+            }
+
+            if (txtPlayer_Blue.Text.Length <= 0)
+            {
+                txtPlayer_Blue.Text = "0";
+            }
+
+            if ((Convert.ToInt32(txtPlayer_Red.Text) >= 0) && (Convert.ToInt32(txtPlayer_Red.Text) < 256) &&
+                (Convert.ToInt32(txtPlayer_Green.Text) >= 0) && (Convert.ToInt32(txtPlayer_Green.Text) < 256) &&
+                (Convert.ToInt32(txtPlayer_Blue.Text) >= 0) && (Convert.ToInt32(txtPlayer_Blue.Text) < 256))
+            {
+                ((Form1)_form1_reference).main_settings.write_config_setting("Video", "color1", Color.FromArgb(Convert.ToInt32(txtPlayer_Red.Text), Convert.ToInt32(txtPlayer_Green.Text), Convert.ToInt32(txtPlayer_Blue.Text)).ToArgb().ToString());
+            }
+            else
+            {
+                MessageBox.Show("An error has been detected in the player area color, \nplease correct this error.", "Error!", MessageBoxButtons.OK);
+                return;
+            }
+        }
+        #endregion
+
+        #region get lives color
+        void Get_Lives_Color()
+        {
+            if (txtLives_Red.Text.Length <= 0)
+            {
+                txtLives_Red.Text = "0";
+            }
+
+            if (txtLives_Green.Text.Length <= 0)
+            {
+                txtLives_Green.Text = "0";
+            }
+
+            if (txtLives_Blue.Text.Length <= 0)
+            {
+                txtLives_Blue.Text = "0";
+            }
+
+            if ((Convert.ToInt32(txtLives_Red.Text) >= 0) && (Convert.ToInt32(txtLives_Red.Text) < 256) &&
+                (Convert.ToInt32(txtLives_Green.Text) >= 0) && (Convert.ToInt32(txtLives_Green.Text) < 256) &&
+                (Convert.ToInt32(txtLives_Blue.Text) >= 0) && (Convert.ToInt32(txtLives_Blue.Text) < 256))
+            {
+                ((Form1)_form1_reference).main_settings.write_config_setting("Video", "color2", Color.FromArgb(Convert.ToInt32(txtLives_Red.Text), Convert.ToInt32(txtLives_Green.Text), Convert.ToInt32(txtLives_Blue.Text)).ToArgb().ToString());
+            }
+            else
+            {
+                MessageBox.Show("An error has been detected in the lives area color, \nplease correct this error.", "Error!", MessageBoxButtons.OK);
+                return;
+            }
+        }
+        #endregion
+
+        #region get default color
+        void Get_Default_Color()
+        {
+            if (txtDefault_Red.Text.Length <= 0)
+            {
+                txtDefault_Red.Text = "0";
+            }
+
+            if (txtDefault_Green.Text.Length <= 0)
+            {
+                txtDefault_Green.Text = "0";
+            }
+
+            if (txtDefault_Blue.Text.Length <= 0)
+            {
+                txtDefault_Blue.Text = "0";
+            }
+
+            if ((Convert.ToInt32(txtDefault_Red.Text) >= 0) && (Convert.ToInt32(txtDefault_Red.Text) < 256) &&
+                (Convert.ToInt32(txtDefault_Green.Text) >= 0) && (Convert.ToInt32(txtDefault_Green.Text) < 256) &&
+                (Convert.ToInt32(txtDefault_Blue.Text) >= 0) && (Convert.ToInt32(txtDefault_Blue.Text) < 256))
+            {
+                ((Form1)_form1_reference).main_settings.write_config_setting("Video", "color3", Color.FromArgb(Convert.ToInt32(txtDefault_Red.Text), Convert.ToInt32(txtDefault_Green.Text), Convert.ToInt32(txtDefault_Blue.Text)).ToArgb().ToString());
+            }
+            else
+            {
+                MessageBox.Show("An error has been detected in the default area color, \nplease correct this error.", "Error!", MessageBoxButtons.OK);
+                return;
+            }
+        }
+        #endregion
+
+        #region get background color
+        void Get_Background_Color()
+        {
+            if (txtBackground_Red.Text.Length <= 0)
+            {
+                txtBackground_Red.Text = "0";
+            }
+
+            if (txtBackground_Green.Text.Length <= 0)
+            {
+                txtBackground_Green.Text = "0";
+            }
+
+            if (txtBackground_Blue.Text.Length <= 0)
+            {
+                txtBackground_Blue.Text = "0";
+            }
+
+            if ((Convert.ToInt32(txtBackground_Red.Text) >= 0) && (Convert.ToInt32(txtBackground_Red.Text) < 256) &&
+                (Convert.ToInt32(txtBackground_Green.Text) >= 0) && (Convert.ToInt32(txtBackground_Green.Text) < 256) &&
+                (Convert.ToInt32(txtBackground_Blue.Text) >= 0) && (Convert.ToInt32(txtBackground_Blue.Text) < 256))
+            {
+                ((Form1)_form1_reference).main_settings.write_config_setting("Video", "color4", Color.FromArgb(Convert.ToInt32(txtBackground_Red.Text), Convert.ToInt32(txtBackground_Green.Text), Convert.ToInt32(txtBackground_Blue.Text)).ToArgb().ToString());
+            }
+            else
+            {
+                MessageBox.Show("An error has been detected in the background area color, \nplease correct this error.", "Error!", MessageBoxButtons.OK);
+                return;
+            }
+        }
+        #endregion
+
+        #region save
+        private void btnSave_color_Click(object sender, EventArgs e)
+        {
+            Get_Spaceship_Color();
+            Get_Player_Color();
+            Get_Lives_Color();
+            Get_Default_Color();
+            Get_Background_Color();
+            MessageBox.Show("Color Settings Successfully Saved.", "Success!", MessageBoxButtons.OK);
+        }
+        #endregion
+
+        #region save
+        private void btnSave_Emulator_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Emulator Settings Successfully Saved.", "Success!", MessageBoxButtons.OK);
         }
         #endregion
     }

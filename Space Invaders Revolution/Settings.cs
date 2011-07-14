@@ -128,6 +128,7 @@ namespace Space_Invaders_Revolution
             write_config_setting("Game", "Bonus_Life", "1500");
             write_config_setting("Game", "Starting_Lives", "3");
             write_config_setting("Game", "Dip_Switch_Total", "0");
+            write_config_setting("Game", "Window_Resolution", "224 x 256");
             write_config_setting("Video", "color0", ((int)Color.Red.ToArgb()).ToString());
             write_config_setting("Video", "color1", ((int)Color.Green.ToArgb()).ToString());
             write_config_setting("Video", "color2", ((int)Color.Green.ToArgb()).ToString());
