@@ -15,3 +15,12 @@ Space Invaders 1.1.1
 Space Invaders 2.0
 - Complete Rewrite of codebase to improve the way the emulator works and looks.
 - Emulator now runs on SlimDX Instead of Managed DirectX.
+
+Space Invaders 2.0.1
+- Fixed a bug in the resolution config system.
+- Modified window title code to work correctly with the new windowing system.
+
+Space Invaders 2.1
+- Replaced renderign core with a new optimized core.
+- Increased renderign performance by 66%.
+- Cleaned up code in cpu core some.

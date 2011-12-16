@@ -8,9 +8,9 @@ Requirements:
 
 Troubleshooting:
 - If it crashes on start up, it means one of the requirements is missing,
-installing .net 2.0 will fix it.
+installing .net 2.0 or updating directx will usually fix it.
 
-Version: 2.0
+Version: 2.1
 
 - Fully emulated i8080 core, no noticeable bugs left.
 - Full Sound support.

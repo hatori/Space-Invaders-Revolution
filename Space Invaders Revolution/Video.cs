@@ -30,9 +30,13 @@ namespace Space_Invaders_Revolution
         private CustomVertex.TransformedTextured[] customvertex;
         private DataStream vertex_data;
         private DataRectangle texture_data;
-        private Color[] colors;
+        private Effect effect;
+        private int[] colors;
+        private int[] data_copy;
         private int height;
         private int width;
+        private int passes;
+        private FileInfo shaders;
         #endregion
 
         #region vertex class
@@ -73,7 +77,8 @@ namespace Space_Invaders_Revolution
 
             try
             {
-                texture = new Texture(device, 256, 256, 0, Usage.None, Format.X8R8G8B8, Pool.Managed);
+                texture = new Texture(device, 256, 256, 0, Usage.Dynamic, Format.A8R8G8B8, Pool.Default);
+                data_copy = new int[256 * 256];
             }
             catch (Direct3D9Exception e)
             {
@@ -83,6 +88,7 @@ namespace Space_Invaders_Revolution
             }
 
             setup_screen();
+            setup_shaders();
             setup_colors();
         }
         #endregion
@@ -112,6 +118,7 @@ namespace Space_Invaders_Revolution
                 pp.BackBufferCount = 1;
                 pp.BackBufferHeight = height;
                 pp.BackBufferWidth = width;
+                pp.BackBufferFormat = Format.A8R8G8B8;
             }
 
             initialize_directx_window();
@@ -121,7 +128,6 @@ namespace Space_Invaders_Revolution
                 try
                 {
                     device = new Device(d3d, 0, DeviceType.Hardware, screen.Handle, CreateFlags.HardwareVertexProcessing, pp);
-                    return true;
                 }
                 catch
                 {
@@ -145,6 +151,7 @@ namespace Space_Invaders_Revolution
                     }
                     return true;
                 }
+                return true;
             }
             else
             {
@@ -163,9 +170,6 @@ namespace Space_Invaders_Revolution
             screen.Text = form1_reference.Text;
             screen.Name = "Directx Screen";
             screen.ClientSize = new System.Drawing.Size(width, height);
-            //screen.WindowState = FormWindowState.Minimized;
-            //screen.ShowInTaskbar = false;
-            //this.Screen_visibility = false;
             screen.FormBorderStyle = FormBorderStyle.FixedSingle;
             screen.StartPosition = FormStartPosition.CenterScreen;
             screen.FormClosing += new FormClosingEventHandler(screen_FormClosing);
@@ -255,7 +259,7 @@ namespace Space_Invaders_Revolution
 
                 try
                 {
-                    texture = new Texture(device, 256, 256, 0, Usage.None, Format.X8R8G8B8, Pool.Managed);
+                    texture = new Texture(device, 256, 256, 0, Usage.Dynamic, Format.A8R8G8B8, Pool.Default);
                 }
                 catch (Direct3D9Exception e)
                 {
@@ -302,41 +306,49 @@ namespace Space_Invaders_Revolution
         private void setup_screen()
         {
             customvertex = new CustomVertex.TransformedTextured[6];
-            vb = new VertexBuffer(device, Marshal.SizeOf(typeof(CustomVertex.TransformedTextured)) * 6, Usage.WriteOnly, CustomVertex.TransformedTextured.Format, Pool.Managed);
+            vb = new VertexBuffer(device, Marshal.SizeOf(typeof(CustomVertex.TransformedTextured)) * 6, Usage.WriteOnly, CustomVertex.TransformedTextured.Format, Pool.Default);
 
             customvertex[0] = new CustomVertex.TransformedTextured(new Vector4(0.0f, 0.0f, 0.0f, 1.0f), new Vector2(0.0f, 0.0f));
-            customvertex[1] = new CustomVertex.TransformedTextured(new Vector4(224.0f, 0.0f, 0.0f, 1.0f), new Vector2(0.875f, 0.0f));
-            customvertex[2] = new CustomVertex.TransformedTextured(new Vector4(0.0f, 256.0f, 0.0f, 1.0f), new Vector2(0.0f, 1.0f));
-            customvertex[3] = new CustomVertex.TransformedTextured(new Vector4(224.0f, 0.0f, 0.0f, 1.0f), new Vector2(0.875f, 0.0f));
-            customvertex[4] = new CustomVertex.TransformedTextured(new Vector4(224.0f, 256.0f, 0.0f, 1.0f), new Vector2(0.875f, 1.0f));
-            customvertex[5] = new CustomVertex.TransformedTextured(new Vector4(0.0f, 256.0f, 0.0f, 1.0f), new Vector2(0.0f, 1.0f));
+            customvertex[1] = new CustomVertex.TransformedTextured(new Vector4(width, 0.0f, 0.0f, 1.0f), new Vector2(0.875f, 0.0f));
+            customvertex[2] = new CustomVertex.TransformedTextured(new Vector4(0.0f, height, 0.0f, 1.0f), new Vector2(0.0f, 1.0f));
+            customvertex[3] = new CustomVertex.TransformedTextured(new Vector4(width, 0.0f, 0.0f, 1.0f), new Vector2(0.875f, 0.0f));
+            customvertex[4] = new CustomVertex.TransformedTextured(new Vector4(width, height, 0.0f, 1.0f), new Vector2(0.875f, 1.0f));
+            customvertex[5] = new CustomVertex.TransformedTextured(new Vector4(0.0f, height, 0.0f, 1.0f), new Vector2(0.0f, 1.0f));
 
-            vertex_data = vb.Lock(0, Marshal.SizeOf(typeof(CustomVertex.TransformedTextured)) * 6, LockFlags.None);
+            vertex_data = vb.Lock(0, Marshal.SizeOf(typeof(CustomVertex.TransformedTextured)) * 6, LockFlags.Discard);
             vertex_data.WriteRange(customvertex);
             vb.Unlock();
+        }
+        #endregion
+
+        #region setup shaders
+        private void setup_shaders()
+        {
+            shaders = new FileInfo("First_shaders.fx");
+            effect = Effect.FromFile(device, shaders.FullName, ShaderFlags.None);
         }
         #endregion
 
         #region setup colors
         private void setup_colors()
         {
-            colors = new Color[5];
+            colors = new int[5];
 
             try
             {
-                colors[0] = Color.FromArgb(int.Parse(((Form1)form1_reference).main_settings.read_config_setting("Video", "color0")));
-                colors[1] = Color.FromArgb(int.Parse(((Form1)form1_reference).main_settings.read_config_setting("Video", "color1")));
-                colors[2] = Color.FromArgb(int.Parse(((Form1)form1_reference).main_settings.read_config_setting("Video", "color2")));
-                colors[3] = Color.FromArgb(int.Parse(((Form1)form1_reference).main_settings.read_config_setting("Video", "color3")));
-                colors[4] = Color.FromArgb(int.Parse(((Form1)form1_reference).main_settings.read_config_setting("Video", "color4")));
+                colors[0] = int.Parse(((Form1)form1_reference).main_settings.read_config_setting("Video", "color0"));
+                colors[1] = int.Parse(((Form1)form1_reference).main_settings.read_config_setting("Video", "color1"));
+                colors[2] = int.Parse(((Form1)form1_reference).main_settings.read_config_setting("Video", "color2"));
+                colors[3] = int.Parse(((Form1)form1_reference).main_settings.read_config_setting("Video", "color3"));
+                colors[4] = int.Parse(((Form1)form1_reference).main_settings.read_config_setting("Video", "color4"));
             }
             catch
             {
-                colors[0] = Color.Red;
-                colors[1] = Color.Green;
-                colors[2] = Color.Green;
-                colors[3] = Color.White;
-                colors[4] = Color.Black;
+                colors[0] = Convert.ToInt32(Color.Red.ToArgb());
+                colors[1] = Convert.ToInt32(Color.Green.ToArgb());
+                colors[2] = Convert.ToInt32(Color.Green.ToArgb());
+                colors[3] = Convert.ToInt32(Color.White.ToArgb());
+                colors[4] = Convert.ToInt32(Color.Black.ToArgb());
             }
         }
         #endregion
@@ -352,8 +364,14 @@ namespace Space_Invaders_Revolution
             }
             else if (result == ResultCode.DeviceNotReset)
             {
+                texture.Dispose();
+                texture = null;
+                vb.Dispose();
+                vb = null;
                 device.Reset(pp);
                 deviceLost = false;
+                setup_screen();
+                texture = new Texture(device, 256, 256, 1, Usage.Dynamic, Format.A8R8G8B8, Pool.Default);
             }
             else
             {
@@ -363,16 +381,17 @@ namespace Space_Invaders_Revolution
         #endregion
 
         #region set pixel
-        public void set_pixel(int x, int y, uint color)
+        public void set_pixel(int x, int y, int color)
         {
-            if (x < 224)
+            /*if (x < 224)
             {
                 if (y < 256)
                 {
                     texture_data.Data.Seek((long)((y * texture_data.Pitch) + (x * 4)), SeekOrigin.Begin);
-                    texture_data.Data.Write<uint>(color);
+                    texture_data.Data.Write<int>(color);
                 }
-            }
+            }*/
+            data_copy[(y << 8) | x] = color;
         }
         #endregion
 
@@ -385,10 +404,11 @@ namespace Space_Invaders_Revolution
             {
                 for (int x = 0; x < 224; x++)
                 {
-                    set_pixel(x, y, (uint)Color.Black.ToArgb());
+                    set_pixel(x, y, 0x00000000);
                 }
             }
 
+            write_data();
             texture.UnlockRectangle(0);
         }
         #endregion
@@ -406,11 +426,18 @@ namespace Space_Invaders_Revolution
             device.Clear(ClearFlags.Target, Color.CornflowerBlue, 1.0f, 0);
             device.BeginScene();
             
-            device.SetTexture(0, texture);
             device.VertexFormat = CustomVertex.TransformedTextured.Format;
             device.SetStreamSource(0, vb, 0, Marshal.SizeOf(typeof(CustomVertex.TransformedTextured)));
-            device.DrawPrimitives(PrimitiveType.TriangleList, 0, 2);
-            device.SetTexture(0, null);
+            effect.Technique = "First_shader";
+            effect.SetTexture("screenBuffer", texture);
+            passes = effect.Begin(FX.None);
+            for (int i = 0; i < passes; i++)
+            {
+                effect.BeginPass(i);
+                device.DrawPrimitives(PrimitiveType.TriangleList, 0, 2);
+                effect.EndPass();
+            }
+            effect.End();
 
             device.EndScene();
             try
@@ -510,7 +537,7 @@ namespace Space_Invaders_Revolution
         #endregion
 
         #region retrieve colors
-        public Color[] Colors
+        public int[] Colors
         {
             get
             {
@@ -529,6 +556,13 @@ namespace Space_Invaders_Revolution
         }
         #endregion
 
+        #region write data
+        public void write_data()
+        {
+            texture_data.Data.WriteRange<int>(data_copy);
+        }
+        #endregion
+
         #region lock texture
         public void lock_texture()
         {
@@ -539,6 +573,7 @@ namespace Space_Invaders_Revolution
         #region unlock texture
         public void unlock_texture()
         {
+            write_data();
             texture.UnlockRectangle(0);
         }
         #endregion

@@ -5,7 +5,7 @@
     <Bonus_Life>1500</Bonus_Life>
     <Starting_Lives>3</Starting_Lives>
     <Dip_Switch_Total>00</Dip_Switch_Total>
-    <Window_Resolution>224 x 256</Window_Resolution>
+    <Window_Resolution>896 x 1024</Window_Resolution>
   </Game>
   <Video>
     <color0>-65536</color0>

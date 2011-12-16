@@ -528,24 +528,24 @@ namespace Space_Invaders_Revolution
                         {
                             if ((width_offset > 31) && (width_offset < 63))
                             {
-                                _video.set_pixel(y, width_offset, (uint)_video.Colors[0].ToArgb());
+                                _video.set_pixel(y, width_offset, (int)_video.Colors[0]);
                             }
                             else if ((width_offset > 182) && (width_offset < 239))
                             {
-                                _video.set_pixel(y, width_offset, (uint)_video.Colors[1].ToArgb());
+                                _video.set_pixel(y, width_offset, (int)_video.Colors[1]);
                             }
                             else if ((width_offset > 238) && (width_offset < 256) && (y > 15) && (y < 103))
                             {
-                                _video.set_pixel(y, width_offset, (uint)_video.Colors[2].ToArgb());
+                                _video.set_pixel(y, width_offset, (int)_video.Colors[2]);
                             }
                             else
                             {
-                                _video.set_pixel(y, width_offset, (uint)_video.Colors[3].ToArgb());
+                                _video.set_pixel(y, width_offset, (int)_video.Colors[3]);
                             }
                         }
                         else
                         {
-                            _video.set_pixel(y, width_offset, (uint)_video.Colors[4].ToArgb());
+                            _video.set_pixel(y, width_offset, (int)_video.Colors[4]);
                         }
                         if (width_offset == 0)
                         {
@@ -722,1230 +722,740 @@ namespace Space_Invaders_Revolution
             switch (opcode)
             {
                 case 0x37:
-                    {
                         STC();
                         return;
-                    }
                 case 0x3F:
-                    {
                         CMC();
                         return;
-                    }
                 case 0x04:
-                    {
                         INR(ref regs.B);
                         return;
-                    }
                 case 0x0C:
-                    {
                         INR(ref regs.C);
                         return;
-                    }
                 case 0x14:
-                    {
                         INR(ref regs.D);
                         return;
-                    }
                 case 0x1C:
-                    {
                         INR(ref regs.E);
                         return;
-                    }
                 case 0x24:
-                    {
                         INR(ref regs.H);
                         return;
-                    }
                 case 0x2C:
-                    {
                         INR(ref regs.L);
                         return;
-                    }
                 case 0x34:
-                    {
                         INR(ref _memory.Memory_Access[regs.HL]);
                         return;
-                    }
-                case 0x3C:
-                    {
+                case 0x3C: 
                         INR(ref regs.A);
                         return;
-                    }
-                case 0x05:
-                    {
+                case 0x05: 
                         DCR(ref regs.B);
                         return;
-                    }
-                case 0x0D:
-                    {
+                case 0x0D: 
                         DCR(ref regs.C);
                         return;
-                    }
-                case 0x15:
-                    {
+                case 0x15: 
                         DCR(ref regs.D);
                         return;
-                    }
-                case 0x1D:
-                    {
+                case 0x1D: 
                         DCR(ref regs.E);
                         return;
-                    }
-                case 0x25:
-                    {
+                case 0x25: 
                         DCR(ref regs.H);
                         return;
-                    }
-                case 0x2D:
-                    {
+                case 0x2D: 
                         DCR(ref regs.L);
                         return;
-                    }
-                case 0x35:
-                    {
+                case 0x35: 
                         DCR(ref _memory.Memory_Access[regs.HL]);
                         return;
-                    }
-                case 0x3D:
-                    {
+                case 0x3D: 
                         DCR(ref regs.A);
                         return;
-                    }
-                case 0x2F:
-                    {
+                case 0x2F: 
                         CMA();
                         return;
-                    }
                 case 0x0:
-                    {
                         nop();
                         return;
-                    }
-                case 0x27:
-                    {
+                case 0x27: 
                         DAA();
                         return;
-                    }
-                case 0x40:
-                    {
+                case 0x40: 
                         MOV(ref regs.B, ref regs.B);
                         return;
-                    }
-                case 0x41:
-                    {
+                case 0x41: 
                         MOV(ref regs.B, ref regs.C);
                         return;
-                    }
-                case 0x42:
-                    {
+                case 0x42: 
                         MOV(ref regs.B, ref regs.D);
                         return;
-                    }
-                case 0x43:
-                    {
+                case 0x43: 
                         MOV(ref regs.B, ref regs.E);
                         return;
-                    }
-                case 0x44:
-                    {
+                case 0x44: 
                         MOV(ref regs.B, ref regs.H);
                         return;
-                    }
-                case 0x45:
-                    {
+                case 0x45: 
                         MOV(ref regs.B, ref regs.L);
                         return;
-                    }
-                case 0x46:
-                    {
+                case 0x46: 
                         MOV(ref regs.B, ref _memory.Memory_Access[regs.HL]);
                         return;
-                    }
-                case 0x47:
-                    {
+                case 0x47: 
                         MOV(ref regs.B, ref regs.A);
                         return;
-                    }
-                case 0x48:
-                    {
+                case 0x48: 
                         MOV(ref regs.C, ref regs.B);
                         return;
-                    }
-                case 0x49:
-                    {
+                case 0x49: 
                         MOV(ref regs.C, ref regs.C);
                         return;
-                    }
-                case 0x4A:
-                    {
+                case 0x4A: 
                         MOV(ref regs.C, ref regs.D);
                         return;
-                    }
-                case 0x4B:
-                    {
+                case 0x4B: 
                         MOV(ref regs.C, ref regs.E);
                         return;
-                    }
-                case 0x4C:
-                    {
+                case 0x4C: 
                         MOV(ref regs.C, ref regs.H);
                         return;
-                    }
-                case 0x4D:
-                    {
+                case 0x4D: 
                         MOV(ref regs.C, ref regs.L);
                         return;
-                    }
-                case 0x4E:
-                    {
+                case 0x4E: 
                         MOV(ref regs.C, ref _memory.Memory_Access[regs.HL]);
                         return;
-                    }
-                case 0x4F:
-                    {
+                case 0x4F: 
                         MOV(ref regs.C, ref regs.A);
                         return;
-                    }
-                case 0x50:
-                    {
+                case 0x50: 
                         MOV(ref regs.D, ref regs.B);
                         return;
-                    }
-                case 0x51:
-                    {
+                case 0x51: 
                         MOV(ref regs.D, ref regs.C);
                         return;
-                    }
-                case 0x52:
-                    {
+                case 0x52: 
                         MOV(ref regs.D, ref regs.D);
                         return;
-                    }
-                case 0x53:
-                    {
+                case 0x53: 
                         MOV(ref regs.D, ref regs.E);
                         return;
-                    }
-                case 0x54:
-                    {
+                case 0x54: 
                         MOV(ref regs.D, ref regs.H);
                         return;
-                    }
-                case 0x55:
-                    {
+                case 0x55: 
                         MOV(ref regs.D, ref regs.L);
                         return;
-                    }
-                case 0x56:
-                    {
+                case 0x56: 
                         MOV(ref regs.D, ref _memory.Memory_Access[regs.HL]);
                         return;
-                    }
-                case 0x57:
-                    {
+                case 0x57: 
                         MOV(ref regs.D, ref regs.A);
                         return;
-                    }
-                case 0x58:
-                    {
+                case 0x58: 
                         MOV(ref regs.E, ref regs.B);
                         return;
-                    }
-                case 0x59:
-                    {
+                case 0x59: 
                         MOV(ref regs.E, ref regs.C);
                         return;
-                    }
-                case 0x5A:
-                    {
+                case 0x5A: 
                         MOV(ref regs.E, ref regs.D);
                         return;
-                    }
-                case 0x5B:
-                    {
+                case 0x5B: 
                         MOV(ref regs.E, ref regs.E);
                         return;
-                    }
-                case 0x5C:
-                    {
+                case 0x5C: 
                         MOV(ref regs.E, ref regs.H);
                         return;
-                    }
-                case 0x5D:
-                    {
+                case 0x5D: 
                         MOV(ref regs.E, ref regs.L);
                         return;
-                    }
-                case 0x5E:
-                    {
+                case 0x5E: 
                         MOV(ref regs.E, ref _memory.Memory_Access[regs.HL]);
                         return;
-                    }
-                case 0x5F:
-                    {
+                case 0x5F:  
                         MOV(ref regs.E, ref regs.A);
                         return;
-                    }
-                case 0x60:
-                    {
+                case 0x60: 
                         MOV(ref regs.H, ref regs.B);
                         return;
-                    }
-                case 0x61:
-                    {
+                case 0x61: 
                         MOV(ref regs.H, ref regs.C);
                         return;
-                    }
-                case 0x62:
-                    {
+                case 0x62: 
                         MOV(ref regs.H, ref regs.D);
                         return;
-                    }
-                case 0x63:
-                    {
+                case 0x63: 
                         MOV(ref regs.H, ref regs.E);
                         return;
-                    }
-                case 0x64:
-                    {
+                case 0x64: 
                         MOV(ref regs.H, ref regs.H);
                         return;
-                    }
-                case 0x65:
-                    {
+                case 0x65: 
                         MOV(ref regs.H, ref regs.L);
                         return;
-                    }
-                case 0x66:
-                    {
+                case 0x66: 
                         MOV(ref regs.H, ref _memory.Memory_Access[regs.HL]);
                         return;
-                    }
-                case 0x67:
-                    {
+                case 0x67: 
                         MOV(ref regs.H, ref regs.A);
                         return;
-                    }
-                case 0x68:
-                    {
+                case 0x68: 
                         MOV(ref regs.L, ref regs.B);
                         return;
-                    }
-                case 0x69:
-                    {
+                case 0x69: 
                         MOV(ref regs.L, ref regs.C);
                         return;
-                    }
-                case 0x6A:
-                    {
+                case 0x6A: 
                         MOV(ref regs.L, ref regs.D);
                         return;
-                    }
-                case 0x6B:
-                    {
+                case 0x6B: 
                         MOV(ref regs.L, ref regs.E);
                         return;
-                    }
-                case 0x6C:
-                    {
+                case 0x6C: 
                         MOV(ref regs.L, ref regs.H);
                         return;
-                    }
-                case 0x6D:
-                    {
+                case 0x6D: 
                         MOV(ref regs.L, ref regs.L);
                         return;
-                    }
-                case 0x6E:
-                    {
+                case 0x6E: 
                         MOV(ref regs.L, ref _memory.Memory_Access[regs.HL]);
                         return;
-                    }
-                case 0x6F:
-                    {
+                case 0x6F: 
                         MOV(ref regs.L, ref regs.A);
                         return;
-                    }
-                case 0x70:
-                    {
+                case 0x70: 
                         MOV(ref _memory.Memory_Access[regs.HL], ref regs.B);
                         return;
-                    }
-                case 0x71:
-                    {
+                case 0x71: 
                         MOV(ref _memory.Memory_Access[regs.HL], ref regs.C);
                         return;
-                    }
-                case 0x72:
-                    {
+                case 0x72: 
                         MOV(ref _memory.Memory_Access[regs.HL], ref regs.D);
                         return;
-                    }
-                case 0x73:
-                    {
+                case 0x73: 
                         MOV(ref _memory.Memory_Access[regs.HL], ref regs.E);
                         return;
-                    }
-                case 0x74:
-                    {
+                case 0x74: 
                         MOV(ref _memory.Memory_Access[regs.HL], ref regs.H);
                         return;
-                    }
-                case 0x75:
-                    {
+                case 0x75: 
                         MOV(ref _memory.Memory_Access[regs.HL], ref regs.L);
                         return;
-                    }
-                case 0x77:
-                    {
+                case 0x77: 
                         MOV(ref _memory.Memory_Access[regs.HL], ref regs.A);
                         return;
-                    }
-                case 0x78:
-                    {
+                case 0x78: 
                         MOV(ref regs.A, ref regs.B);
                         return;
-                    }
-                case 0x79:
-                    {
+                case 0x79: 
                         MOV(ref regs.A, ref regs.C);
                         return;
-                    }
-                case 0x7A:
-                    {
+                case 0x7A: 
                         MOV(ref regs.A, ref regs.D);
                         return;
-                    }
-                case 0x7B:
-                    {
+                case 0x7B: 
                         MOV(ref regs.A, ref regs.E);
                         return;
-                    }
-                case 0x7C:
-                    {
+                case 0x7C: 
                         MOV(ref regs.A, ref regs.H);
                         return;
-                    }
-                case 0x7D:
-                    {
+                case 0x7D: 
                         MOV(ref regs.A, ref regs.L);
                         return;
-                    }
-                case 0x7E:
-                    {
+                case 0x7E: 
                         MOV(ref regs.A, ref _memory.Memory_Access[regs.HL]);
                         return;
-                    }
-                case 0x7F:
-                    {
+                case 0x7F: 
                         MOV(ref regs.A, ref regs.A);
                         return;
-                    }
-                case 0x02:
-                    {
+                case 0x02: 
                         STAX(ref regs.BC);
                         return;
-                    }
-                case 0x12:
-                    {
+                case 0x12: 
                         STAX(ref regs.DE);
                         return;
-                    }
-                case 0x0A:
-                    {
+                case 0x0A: 
                         LDAX(ref regs.BC);
                         return;
-                    }
-                case 0x1A:
-                    {
+                case 0x1A: 
                         LDAX(ref regs.DE);
                         return;
-                    }
-                case 0x80:
-                    {
+                case 0x80: 
                         ADD(ref regs.B);
                         return;
-                    }
-                case 0x81:
-                    {
+                case 0x81: 
                         ADD(ref regs.C);
                         return;
-                    }
-                case 0x82:
-                    {
+                case 0x82: 
                         ADD(ref regs.D);
                         return;
-                    }
-                case 0x83:
-                    {
+                case 0x83: 
                         ADD(ref regs.E);
                         return;
-                    }
-                case 0x84:
-                    {
+                case 0x84: 
                         ADD(ref regs.H);
                         return;
-                    }
-                case 0x85:
-                    {
+                case 0x85: 
                         ADD(ref regs.L);
                         return;
-                    }
-                case 0x86:
-                    {
+                case 0x86: 
                         ADD(ref _memory.Memory_Access[regs.HL]);
                         return;
-                    }
-                case 0x87:
-                    {
+                case 0x87: 
                         ADD(ref regs.A);
                         return;
-                    }
-                case 0x88:
-                    {
+                case 0x88: 
                         ADC(ref regs.B);
                         return;
-                    }
-                case 0x89:
-                    {
+                case 0x89: 
                         ADC(ref regs.C);
                         return;
-                    }
-                case 0x8A:
-                    {
+                case 0x8A: 
                         ADC(ref regs.D);
                         return;
-                    }
-                case 0x8B:
-                    {
+                case 0x8B: 
                         ADC(ref regs.E);
                         return;
-                    }
-                case 0x8C:
-                    {
+                case 0x8C: 
                         ADC(ref regs.H);
                         return;
-                    }
-                case 0x8D:
-                    {
+                case 0x8D: 
                         ADC(ref regs.L);
                         return;
-                    }
-                case 0x8E:
-                    {
+                case 0x8E: 
                         ADC(ref _memory.Memory_Access[regs.HL]);
                         return;
-                    }
-                case 0x8F:
-                    {
+                case 0x8F: 
                         ADC(ref regs.A);
                         return;
-                    }
-                case 0x90:
-                    {
+                case 0x90: 
                         SUB(ref regs.B);
                         return;
-                    }
-                case 0x91:
-                    {
+                case 0x91: 
                         SUB(ref regs.C);
                         return;
-                    }
-                case 0x92:
-                    {
+                case 0x92: 
                         SUB(ref regs.D);
                         return;
-                    }
-                case 0x93:
-                    {
+                case 0x93: 
                         SUB(ref regs.E);
                         return;
-                    }
-                case 0x94:
-                    {
+                case 0x94: 
                         SUB(ref regs.H);
                         return;
-                    }
-                case 0x95:
-                    {
+                case 0x95: 
                         SUB(ref regs.L);
                         return;
-                    }
-                case 0x96:
-                    {
+                case 0x96: 
                         SUB(ref _memory.Memory_Access[regs.HL]);
                         return;
-                    }
-                case 0x97:
-                    {
+                case 0x97: 
                         SUB(ref regs.A);
                         return;
-                    }
-                case 0x98:
-                    {
+                case 0x98: 
                         SBB(ref regs.B);
                         return;
-                    }
-                case 0x99:
-                    {
+                case 0x99: 
                         SBB(ref regs.C);
                         return;
-                    }
-                case 0x9A:
-                    {
+                case 0x9A: 
                         SBB(ref regs.D);
                         return;
-                    }
-                case 0x9B:
-                    {
+                case 0x9B: 
                         SBB(ref regs.E);
                         return;
-                    }
-                case 0x9C:
-                    {
+                case 0x9C: 
                         SBB(ref regs.H);
                         return;
-                    }
-                case 0x9D:
-                    {
+                case 0x9D: 
                         SBB(ref regs.L);
                         return;
-                    }
-                case 0x9E:
-                    {
+                case 0x9E: 
                         SBB(ref _memory.Memory_Access[regs.HL]);
                         return;
-                    }
-                case 0x9F:
-                    {
+                case 0x9F: 
                         SBB(ref regs.A);
                         return;
-                    }
-                case 0xA0:
-                    {
+                case 0xA0: 
                         ANA(ref regs.B);
                         return;
-                    }
-                case 0xA1:
-                    {
+                case 0xA1: 
                         ANA(ref regs.C);
                         return;
-                    }
-                case 0xA2:
-                    {
+                case 0xA2: 
                         ANA(ref regs.D);
                         return;
-                    }
-                case 0xA3:
-                    {
+                case 0xA3: 
                         ANA(ref regs.E);
                         return;
-                    }
-                case 0xA4:
-                    {
+                case 0xA4: 
                         ANA(ref regs.H);
                         return;
-                    }
-                case 0xA5:
-                    {
+                case 0xA5: 
                         ANA(ref regs.L);
                         return;
-                    }
-                case 0xA6:
-                    {
+                case 0xA6: 
                         ANA(ref _memory.Memory_Access[regs.HL]);
                         return;
-                    }
-                case 0xA7:
-                    {
+                case 0xA7: 
                         ANA(ref regs.A);
                         return;
-                    }
-                case 0xA8:
-                    {
+                case 0xA8: 
                         XRA(ref regs.B);
                         return;
-                    }
-                case 0xA9:
-                    {
+                case 0xA9: 
                         XRA(ref regs.C);
                         return;
-                    }
-                case 0xAA:
-                    {
+                case 0xAA: 
                         XRA(ref regs.D);
                         return;
-                    }
-                case 0xAB:
-                    {
+                case 0xAB: 
                         XRA(ref regs.E);
                         return;
-                    }
-                case 0xAC:
-                    {
+                case 0xAC: 
                         XRA(ref regs.H);
                         return;
-                    }
-                case 0xAD:
-                    {
+                case 0xAD: 
                         XRA(ref regs.L);
                         return;
-                    }
-                case 0xAE:
-                    {
+                case 0xAE: 
                         XRA(ref _memory.Memory_Access[regs.HL]);
                         return;
-                    }
-                case 0xAF:
-                    {
+                case 0xAF: 
                         XRA(ref regs.A);
                         return;
-                    }
-                case 0xB0:
-                    {
+                case 0xB0: 
                         ORA(ref regs.B);
                         return;
-                    }
-                case 0xB1:
-                    {
+                case 0xB1: 
                         ORA(ref regs.C);
                         return;
-                    }
-                case 0xB2:
-                    {
+                case 0xB2: 
                         ORA(ref regs.D);
                         return;
-                    }
-                case 0xB3:
-                    {
+                case 0xB3: 
                         ORA(ref regs.E);
                         return;
-                    }
-                case 0xB4:
-                    {
+                case 0xB4: 
                         ORA(ref regs.H);
                         return;
-                    }
-                case 0xB5:
-                    {
+                case 0xB5: 
                         ORA(ref regs.L);
                         return;
-                    }
-                case 0xB6:
-                    {
+                case 0xB6: 
                         ORA(ref _memory.Memory_Access[regs.HL]);
                         return;
-                    }
-                case 0xB7:
-                    {
+                case 0xB7: 
                         ORA(ref regs.A);
                         return;
-                    }
-                case 0xB8:
-                    {
+                case 0xB8: 
                         CMP(ref regs.B);
                         return;
-                    }
-                case 0xB9:
-                    {
+                case 0xB9: 
                         CMP(ref regs.C);
                         return;
-                    }
-                case 0xBA:
-                    {
+                case 0xBA: 
                         CMP(ref regs.D);
                         return;
-                    }
-                case 0xBB:
-                    {
+                case 0xBB: 
                         CMP(ref regs.E);
                         return;
-                    }
-                case 0xBC:
-                    {
+                case 0xBC: 
                         CMP(ref regs.H);
                         return;
-                    }
-                case 0xBD:
-                    {
+                case 0xBD: 
                         CMP(ref regs.L);
                         return;
-                    }
-                case 0xBE:
-                    {
+                case 0xBE: 
                         CMP(ref _memory.Memory_Access[regs.HL]);
                         return;
-                    }
-                case 0xBF:
-                    {
+                case 0xBF: 
                         CMP(ref regs.A);
                         return;
-                    }
-                case 0x07:
-                    {
+                case 0x07: 
                         RLC();
                         return;
-                    }
-                case 0x0F:
-                    {
+                case 0x0F: 
                         RRC();
                         return;
-                    }
-                case 0x17:
-                    {
+                case 0x17: 
                         RAL();
                         return;
-                    }
-                case 0x1F:
-                    {
+                case 0x1F: 
                         RAR();
                         return;
-                    }
-                case 0xC5:
-                    {
+                case 0xC5: 
                         PUSH(ref regs.B, ref regs.C);
                         return;
-                    }
-                case 0xD5:
-                    {
+                case 0xD5: 
                         PUSH(ref regs.D, ref regs.E);
                         return;
-                    }
-                case 0xE5:
-                    {
+                case 0xE5: 
                         PUSH(ref regs.H, ref regs.L);
                         return;
-                    }
-                case 0xF5:
-                    {
+                case 0xF5: 
                         PUSH(ref regs.A, ref regs.F);
                         return;
-                    }
-                case 0xC1:
-                    {
+                case 0xC1: 
                         POP(ref regs.B, ref regs.C);
                         return;
-                    }
-                case 0xD1:
-                    {
+                case 0xD1: 
                         POP(ref regs.D, ref regs.E);
                         return;
-                    }
-                case 0xE1:
-                    {
+                case 0xE1: 
                         POP(ref regs.H, ref regs.L);
                         return;
-                    }
-                case 0xF1:
-                    {
+                case 0xF1: 
                         POP(ref regs.A, ref regs.F);
                         return;
-                    }
-                case 0x09:
-                    {
+                case 0x09: 
                         DAD(ref regs.BC);
                         return;
-                    }
-                case 0x19:
-                    {
+                case 0x19: 
                         DAD(ref regs.DE);
                         return;
-                    }
-                case 0x29:
-                    {
+                case 0x29: 
                         DAD(ref regs.HL);
                         return;
-                    }
-                case 0x39:
-                    {
+                case 0x39: 
                         DAD(ref sp);
                         return;
-                    }
-                case 0x03:
-                    {
+                case 0x03: 
                         INX(ref regs.BC);
                         return;
-                    }
-                case 0x13:
-                    {
+                case 0x13: 
                         INX(ref regs.DE);
                         return;
-                    }
-                case 0x23:
-                    {
+                case 0x23: 
                         INX(ref regs.HL);
                         return;
-                    }
-                case 0x33:
-                    {
+                case 0x33: 
                         INX(ref sp);
                         return;
-                    }
-                case 0x0B:
-                    {
+                case 0x0B: 
                         DCX(ref regs.BC);
                         return;
-                    }
-                case 0x1B:
-                    {
+                case 0x1B: 
                         DCX(ref regs.DE);
                         return;
-                    }
-                case 0x2B:
-                    {
+                case 0x2B: 
                         DCX(ref regs.HL);
                         return;
-                    }
-                case 0x3B:
-                    {
+                case 0x3B: 
                         DCX(ref sp);
                         return;
-                    }
-                case 0xEB:
-                    {
+                case 0xEB: 
                         XCHG();
                         return;
-                    }
-                case 0xE3:
-                    {
+                case 0xE3: 
                         XTHL();
                         return;
-                    }
-                case 0xF9:
-                    {
+                case 0xF9: 
                         SPHL();
                         return;
-                    }
-                case 0x01:
-                    {
+                case 0x01: 
                         LXI(ref regs.BC);
                         return;
-                    }
-                case 0x11:
-                    {
+                case 0x11: 
                         LXI(ref regs.DE);
                         return;
-                    }
-                case 0x21:
-                    {
+                case 0x21: 
                         LXI(ref regs.HL);
                         return;
-                    }
-                case 0x31:
-                    {
+                case 0x31: 
                         LXI(ref sp);
                         return;
-                    }
-                case 0x06:
-                    {
+                case 0x06: 
                         MVI(ref regs.B);
                         return;
-                    }
-                case 0x0E:
-                    {
+                case 0x0E: 
                         MVI(ref regs.C);
                         return;
-                    }
-                case 0x16:
-                    {
+                case 0x16: 
                         MVI(ref regs.D);
                         return;
-                    }
-                case 0x1E:
-                    {
+                case 0x1E: 
                         MVI(ref regs.E);
                         return;
-                    }
-                case 0x26:
-                    {
+                case 0x26: 
                         MVI(ref regs.H);
                         return;
-                    }
-                case 0x2E:
-                    {
+                case 0x2E: 
                         MVI(ref regs.L);
                         return;
-                    }
-                case 0x36:
-                    {
+                case 0x36: 
                         MVI(ref _memory.Memory_Access[regs.HL]);
                         return;
-                    }
-                case 0x3E:
-                    {
+                case 0x3E: 
                         MVI(ref regs.A);
                         return;
-                    }
-                case 0xC6:
-                    {
+                case 0xC6: 
                         ADI();
                         return;
-                    }
-                case 0xCE:
-                    {
+                case 0xCE: 
                         ACI();
                         return;
-                    }
-                case 0xD6:
-                    {
+                case 0xD6: 
                         SUI();
                         return;
-                    }
-                case 0xDE:
-                    {
+                case 0xDE: 
                         SBI();
                         return;
-                    }
-                case 0xE6:
-                    {
+                case 0xE6: 
                         ANI();
                         return;
-                    }
-                case 0xEE:
-                    {
+                case 0xEE: 
                         XRI();
                         return;
-                    }
-                case 0xF6:
-                    {
+                case 0xF6: 
                         ORI();
                         return;
-                    }
-                case 0xFE:
-                    {
+                case 0xFE: 
                         CPI();
                         return;
-                    }
-                case 0x32:
-                    {
+                case 0x32: 
                         STA();
                         return;
-                    }
-                case 0x3A:
-                    {
+                case 0x3A: 
                         LDA();
                         return;
-                    }
-                case 0x22:
-                    {
+                case 0x22: 
                         SHLD();
                         return;
-                    }
-                case 0x2A:
-                    {
+                case 0x2A: 
                         LHLD();
                         return;
-                    }
-                case 0xE9:
-                    {
+                case 0xE9: 
                         PCHL();
                         return;
-                    }
-                case 0xC3:
-                    {
+                case 0xC3: 
                         JMP("");
                         return;
-                    }
-                case 0xDA:
-                    {
+                case 0xDA: 
                         JMP("JC");
                         return;
-                    }
-                case 0xD2:
-                    {
+                case 0xD2: 
                         JMP("JNC");
                         return;
-                    }
-                case 0xCA:
-                    {
+                case 0xCA: 
                         JMP("JZ");
                         return;
-                    }
-                case 0xC2:
-                    {
+                case 0xC2: 
                         JMP("JNZ");
                         return;
-                    }
-                case 0xFA:
-                    {
+                case 0xFA: 
                         JMP("JM");
                         return;
-                    }
-                case 0xF2:
-                    {
+                case 0xF2: 
                         JMP("JP");
                         return;
-                    }
-                case 0xEA:
-                    {
+                case 0xEA: 
                         JMP("JPE");
                         return;
-                    }
-                case 0xE2:
-                    {
+                case 0xE2: 
                         JMP("JPO");
                         return;
-                    }
-                case 0xCD:
-                    {
+                case 0xCD: 
                         CALL("");
                         return;
-                    }
-                case 0xDC:
-                    {
+                case 0xDC: 
                         CALL("CC");
                         return;
-                    }
-                case 0xD4:
-                    {
+                case 0xD4: 
                         CALL("CNC");
                         return;
-                    }
-                case 0xCC:
-                    {
+                case 0xCC: 
                         CALL("CZ");
                         return;
-                    }
-                case 0xC4:
-                    {
+                case 0xC4: 
                         CALL("CNZ");
                         return;
-                    }
-                case 0xFC:
-                    {
+                case 0xFC: 
                         CALL("CM");
                         return;
-                    }
-                case 0xF4:
-                    {
+                case 0xF4: 
                         CALL("CP");
                         return;
-                    }
-                case 0xEC:
-                    {
+                case 0xEC: 
                         CALL("CPE");
                         return;
-                    }
-                case 0xE4:
-                    {
+                case 0xE4: 
                         CALL("CPO");
                         return;
-                    }
-                case 0xC9:
-                    {
+                case 0xC9: 
                         RET("");
                         return;
-                    }
-                case 0xD8:
-                    {
+                case 0xD8: 
                         RET("RC");
                         return;
-                    }
-                case 0xD0:
-                    {
+                case 0xD0: 
                         RET("RNC");
                         return;
-                    }
-                case 0xC8:
-                    {
+                case 0xC8: 
                         RET("RZ");
                         return;
-                    }
-                case 0xC0:
-                    {
+                case 0xC0: 
                         RET("RNZ");
                         return;
-                    }
-                case 0xF8:
-                    {
+                case 0xF8: 
                         RET("RM");
                         return;
-                    }
-                case 0xF0:
-                    {
+                case 0xF0: 
                         RET("RP");
                         return;
-                    }
-                case 0xE8:
-                    {
+                case 0xE8: 
                         RET("RPE");
                         return;
-                    }
-                case 0xE0:
-                    {
+                case 0xE0: 
                         RET("RPO");
                         return;
-                    }
-                case 0xC7:
-                    {
+                case 0xC7: 
                         RST(0);
                         return;
-                    }
-                case 0xCF:
-                    {
+                case 0xCF: 
                         RST(1);
                         return;
-                    }
-                case 0xD7:
-                    {
+                case 0xD7: 
                         RST(2);
                         return;
-                    }
-                case 0xDF:
-                    {
+                case 0xDF: 
                         RST(3);
                         return;
-                    }
-                case 0xE7:
-                    {
+                case 0xE7: 
                         RST(4);
                         return;
-                    }
-                case 0xEF:
-                    {
+                case 0xEF: 
                         RST(5);
                         return;
-                    }
-                case 0xF7:
-                    {
+                case 0xF7: 
                         RST(6);
                         return;
-                    }
-                case 0xFF:
-                    {
+                case 0xFF: 
                         RST(7);
                         return;
-                    }
-                case 0xFB:
-                    {
+                case 0xFB: 
                         EI();
                         return;
-                    }
-                case 0xF3:
-                    {
+                case 0xF3: 
                         DI();
                         return;
-                    }
-                case 0xDB:
-                    {
+                case 0xDB: 
                         IN();
                         return;
-                    }
-                case 0xD3:
-                    {
+                case 0xD3: 
                         OUT();
                         return;
-                    }
-                case 0x76:
-                    {
+                case 0x76: 
                         HLT();
                         return;
-                    }
-                default:
-                    {
+                default: 
                         pc++;
                         return;
-                    }
             }
         }
         #endregion

@@ -1,4 +1,4 @@
-﻿//#define SPEED
+﻿#define SPEED
 using System;
 using System.Drawing;
 using System.IO;
@@ -67,7 +67,7 @@ namespace Space_Invaders_Revolution
             {
                 resources = new ZipFile("Space Invaders Resources.zip");
             }
-            application_title("Space Invaders Revolution");
+            application_title(this, "Space Invaders Revolution");
             application_resize(300, 26);
             application_menubar();
             application_wallpaper("invaders.jpg");
@@ -106,11 +106,11 @@ namespace Space_Invaders_Revolution
         #endregion
 
         #region title
-        public void application_title(string title)
+        public void application_title(Form window, string title)
         {
             try
             {
-                this.Text = title;
+                window.Text = title;
             }
             catch (Exception e)
             {
@@ -248,11 +248,11 @@ namespace Space_Invaders_Revolution
                 //application_title("Space Invaders Revolution " + time_span.TotalMilliseconds + " ms to render frame");
                 QueryPerformanceCounter(ref ctr2);
                 QueryPerformanceFrequency(ref freq);
-                application_title("Space Invaders Revolution " + ((ctr2 - ctr1) * (1.0 / freq)) + " s to render frame");
+                application_title(video.Directx_Window, "Space Invaders Revolution " + ((ctr2 - ctr1) * (1.0 / freq)) + " s to render frame");
             }
             else
             {
-                application_title("Space Invaders Revolution");
+                application_title(video.Directx_Window, "Space Invaders Revolution");
             }
 #endif
         }
